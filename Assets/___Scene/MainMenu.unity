@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515256753}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515256753}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: TutorialsGame
         m_Mode: 1
@@ -684,7 +684,6 @@ GameObject:
   - component: {fileID: 1515256751}
   - component: {fileID: 1515256750}
   - component: {fileID: 1515256749}
-  - component: {fileID: 1515256753}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -778,18 +777,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1515256753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515256748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada3bb1ddbcf0f947b5274fc363b3520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1600854399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,19 +1305,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1460053484458315086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552027335694918689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a001e7349958d47adee620affd96ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 6892786581158427868}
 --- !u!114 &1479826207819168649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,7 +1535,6 @@ GameObject:
   - component: {fileID: 5540852073063236797}
   - component: {fileID: 696742567395268350}
   - component: {fileID: 2867399120823086864}
-  - component: {fileID: 1460053484458315086}
   m_Layer: 5
   m_Name: SettingCanvas
   m_TagString: Untagged
@@ -4132,7 +4105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1460053484458315086}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingPanel, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
