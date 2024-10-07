@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource effectAudioSource; // 효과음 전용 오디오 소스 , 설정 필수
     public AudioSource backgroundAudioSource; // 배경음 전용 오디오 소스 , 설정 필수
     public AudioClip effectAudioClip; // 효과음 클립 , 설정 필수
-    public GameObject sound; // 배경음악을 재생할 오브젝트 , 설정 필수
+    public AudioClip backSound; // 배경음악 클립 , 설정 필수
 
     private void Awake()
     {
@@ -21,12 +21,14 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject); // 씬 전환 시 파괴되지 않음
             effectAudioSource = gameObject.AddComponent<AudioSource>(); // 효과음용 AudioSource 추가
-            backgroundAudioSource = sound.GetComponent<AudioSource>(); // 배경음 전용 AudioSource 참조
+            backgroundAudioSource = gameObject.AddComponent<AudioSource>(); // 배경음용 AudioSource 추가
+
+            backgroundAudioSource.clip = backSound; // 배경음 클립 할당
 
             if (!backgroundAudioSource.isPlaying)
             {
                 backgroundAudioSource.Play(); // 배경음 재생
-                DontDestroyOnLoad(sound); // 배경음이 계속 재생되게 설정
+                DontDestroyOnLoad(gameObject); // AudioManager 오브젝트 유지
             }
         }
         else

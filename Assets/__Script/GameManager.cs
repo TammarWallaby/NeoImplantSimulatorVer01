@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         // ESC 키가 눌렸을 때
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();            
+            TogglePause();
         }
     }
 
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             if (playerMove != null) playerMove.enabled = false; // 플레이어 움직임 비활성화
             if (cameraRot != null) cameraRot.enabled = false;
             Cursor.visible = true;
-            CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
+            //CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
         }
         else
         {

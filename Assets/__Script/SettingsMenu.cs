@@ -103,7 +103,7 @@ public class SettingsMenu : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
             TogglePause();
-        }          
+        }
     }
 
     public void TogglePause()
@@ -117,7 +117,7 @@ public class SettingsMenu : MonoBehaviour
             if (playerMove != null) playerMove.enabled = false; // 플레이어 움직임 비활성화
             if (cameraRot != null) cameraRot.enabled = false;
             Cursor.visible = true;
-            CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
+            //CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
         }
         else
         {
@@ -153,7 +153,7 @@ public class SettingsMenu : MonoBehaviour
 
     void SetEffectVolume(float volume)
     {
-        EffectManager.instance.SetEffectVolume(volume / 100f); // 사운드를 0~1 범위로 설정
+        AudioManager.instance.SetEffectVolume(volume / 100f); // 사운드를 0~1 범위로 설정
         effectVolumeValueText.text = volume.ToString("F0") + "%"; // 소수점 없이 슬라이더 값을 텍스트로 표시
         SettingsData.instance.backgroundVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
     }
@@ -198,13 +198,13 @@ public class SettingsMenu : MonoBehaviour
 #endif
     }
 
+
     private void Update()
     {
-        // ESC 입력으로 설정 패널 토글
-        if (Input.GetKeyDown(KeyCode.Escape)) // ESC 누르면 패널 열리게하기
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("ESC key pressed"); // ESC 키 눌림 여부를 로그로 확인
             ToggleSettingsPanel(); // 패널 토글
-
         }
     }
 }

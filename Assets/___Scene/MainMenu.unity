@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515256753}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515256753}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: TutorialsGame
         m_Mode: 1
@@ -684,6 +684,7 @@ GameObject:
   - component: {fileID: 1515256751}
   - component: {fileID: 1515256750}
   - component: {fileID: 1515256749}
+  - component: {fileID: 1515256753}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -777,6 +778,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1515256753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515256748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605ea60dd6ce3854ab9a293daac1baa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1600854399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1416,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 537e8665a73ad1e44ad41969393ca45e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5f6d6469073922b4e8b0d360f26b2679, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1535,6 +1548,7 @@ GameObject:
   - component: {fileID: 5540852073063236797}
   - component: {fileID: 696742567395268350}
   - component: {fileID: 2867399120823086864}
+  - component: {fileID: 5540852073063236798}
   m_Layer: 5
   m_Name: SettingCanvas
   m_TagString: Untagged
@@ -1900,10 +1914,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7826784518961070327}
-  - component: {fileID: 7508042133520757060}
-  - component: {fileID: 9193454377268575064}
+  - component: {fileID: 7826784518961070328}
   m_Layer: 0
-  m_Name: StartMusic
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2156,26 +2169,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3760152138259489628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6892786581158427868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877edb9dc543d1b4887c238ffead046c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 6892786581158427868}
-  backgroundVolumeSlider: {fileID: 2709475203147888622}
-  effectVolumeSlider: {fileID: 3980796633847190178}
-  mouseSensitivitySlider: {fileID: 2477831110568564358}
-  backgroundVolumeText: {fileID: 2517417562863990262}
-  sensitivityValueText: {fileID: 8109044525568451797}
-  effectVolumeValueText: {fileID: 3164836830688403926}
-  sensitivityInputField: {fileID: 1479826207819168649}
 --- !u!222 &3863060240776689578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2392,7 +2385,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3760152138259489628}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ReturnToMainMenu
         m_Mode: 1
@@ -2495,7 +2488,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9ae380364de8c234d95a2052b362fc40, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a5b707b6ab741e049ba81e2a9ce4de72, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2729,14 +2722,29 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3399575602897725370}
-  - component: {fileID: 6157967765562761443}
+  - component: {fileID: 5226190316744256066}
   m_Layer: 0
-  m_Name: SettingsManager
+  m_Name: SettingsData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5226190316744256066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226190316744256065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bf4496dd490784a8eafe8fdfa9d3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundVolume: 1
+  effectVolume: 1
+  mouseSensitivity: 120
 --- !u!114 &5234899781695892434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2882,6 +2890,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &5540852073063236798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552027335694918689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1906a88286bc7b4418f1ec091e3d0845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 6892786581158427868}
+  backgroundVolumeSlider: {fileID: 2709475203147888622}
+  effectVolumeSlider: {fileID: 3980796633847190178}
+  mouseSensitivitySlider: {fileID: 2477831110568564358}
+  backgroundVolumeText: {fileID: 2517417562863990262}
+  sensitivityValueText: {fileID: 8109044525568451797}
+  effectVolumeValueText: {fileID: 3164836830688403926}
+  sensitivityInputField: {fileID: 1479826207819168649}
+  isPaused: 0
 --- !u!1 &5719281181872896519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,21 +3043,6 @@ RectTransform:
   m_AnchoredPosition: {x: 545, y: 360}
   m_SizeDelta: {x: 82, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6157967765562761443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5226190316744256065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5437ac544a5d09c449da148f2ee04ef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundVolume: 1
-  effectVolume: 1
-  mouseSensitivity: 120
 --- !u!1 &6183140492248611012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,9 +3264,8 @@ GameObject:
   - component: {fileID: 7040453707631205611}
   - component: {fileID: 7875583912635225480}
   - component: {fileID: 7919136917412656820}
-  - component: {fileID: 3760152138259489628}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: SettingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3329,12 +3342,12 @@ RectTransform:
   - {fileID: 4439099776608318304}
   - {fileID: 7594572764542017023}
   - {fileID: 6524619964362117302}
-  - {fileID: 6422745454353883418}
   - {fileID: 7987664947914419928}
   - {fileID: 4528913226564250491}
   - {fileID: 6959216293634359596}
   - {fileID: 6069591628685011203}
   - {fileID: 6007906277027638660}
+  - {fileID: 6422745454353883418}
   - {fileID: 8854564918364843916}
   - {fileID: 4604360872645236685}
   - {fileID: 3591261125577194076}
@@ -3490,20 +3503,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7508042133520757060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800209342336886977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cca9464791ff09459935ed12afd893f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundAudioSource: {fileID: 1542600514127524919}
-  backgroundMusic: {fileID: 8300000, guid: 537e8665a73ad1e44ad41969393ca45e, type: 3}
 --- !u!114 &7536668986749834005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3694,6 +3693,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7826784518961070328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800209342336886977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24c42c1070be3b4e97026f95cc62928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectAudioSource: {fileID: 4856326476649419533}
+  backgroundAudioSource: {fileID: 1542600514127524919}
+  effectAudioClip: {fileID: 8300000, guid: a5b707b6ab741e049ba81e2a9ce4de72, type: 3}
+  backSound: {fileID: 8300000, guid: 5f6d6469073922b4e8b0d360f26b2679, type: 3}
 --- !u!224 &7852283958834775059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3849,7 +3864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3760152138259489628}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ToggleSettingsPanel
         m_Mode: 1
@@ -4047,20 +4062,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00035286, y: 0.00003171}
   m_SizeDelta: {x: 95.617, y: 45.544}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9193454377268575064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800209342336886977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5829ba88882d9eb4d92440af1f2f40b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectAudioSource: {fileID: 4856326476649419533}
-  effectAudioMusic: {fileID: 8300000, guid: 9ae380364de8c234d95a2052b362fc40, type: 3}
 --- !u!114 &9195701357255352964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4106,7 +4107,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
