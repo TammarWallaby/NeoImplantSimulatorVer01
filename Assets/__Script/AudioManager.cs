@@ -1,51 +1,51 @@
-/*
- * ¹è°æÀ½, È¿°úÀ½ ÁöÁ¤
- * AudioManager ¿ÀºêÁ§Æ®¿¡ ³ÖÀ»°ÅÀÓ(ºó ¿ÀºêÁ§Æ®)
- * DontDestroyOnLoad() ÀÖÀ½
+ï»¿/*
+ * ë°°ê²½ìŒ, íš¨ê³¼ìŒ ì§€ì •
+ * AudioManager ì˜¤ë¸Œì íŠ¸ì— ë„£ì„ê±°ì„(ë¹ˆ ì˜¤ë¸Œì íŠ¸)
+ * DontDestroyOnLoad() ìˆìŒ
  */
 
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance; // ½Ì±ÛÅÏ ÀÎ½ºÅÏ½º , ¼³Á¤ ÇÊ¼ö
-    public AudioSource effectAudioSource; // È¿°úÀ½ Àü¿ë ¿Àµğ¿À ¼Ò½º , ¼³Á¤ ÇÊ¼ö
-    public AudioSource backgroundAudioSource; // ¹è°æÀ½ Àü¿ë ¿Àµğ¿À ¼Ò½º , ¼³Á¤ ÇÊ¼ö
-    public AudioClip effectAudioClip; // È¿°úÀ½ Å¬¸³ , ¼³Á¤ ÇÊ¼ö
-    public GameObject sound; // ¹è°æÀ½¾ÇÀ» Àç»ıÇÒ ¿ÀºêÁ§Æ® , ¼³Á¤ ÇÊ¼ö
+    public static AudioManager instance; // ì‹±ê¸€í„´ ì¸ìŠ¤í„´ìŠ¤ , ì„¤ì • í•„ìˆ˜
+    public AudioSource effectAudioSource; // íš¨ê³¼ìŒ ì „ìš© ì˜¤ë””ì˜¤ ì†ŒìŠ¤ , ì„¤ì • í•„ìˆ˜
+    public AudioSource backgroundAudioSource; // ë°°ê²½ìŒ ì „ìš© ì˜¤ë””ì˜¤ ì†ŒìŠ¤ , ì„¤ì • í•„ìˆ˜
+    public AudioClip effectAudioClip; // íš¨ê³¼ìŒ í´ë¦½ , ì„¤ì • í•„ìˆ˜
+    public GameObject sound; // ë°°ê²½ìŒì•…ì„ ì¬ìƒí•  ì˜¤ë¸Œì íŠ¸ , ì„¤ì • í•„ìˆ˜
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // ¾À ÀüÈ¯ ½Ã ÆÄ±«µÇÁö ¾ÊÀ½
-            effectAudioSource = gameObject.AddComponent<AudioSource>(); // È¿°úÀ½¿ë AudioSource Ãß°¡
-            backgroundAudioSource = sound.GetComponent<AudioSource>(); // ¹è°æÀ½ Àü¿ë AudioSource ÂüÁ¶
+            DontDestroyOnLoad(gameObject); // ì”¬ ì „í™˜ ì‹œ íŒŒê´´ë˜ì§€ ì•ŠìŒ
+            effectAudioSource = gameObject.AddComponent<AudioSource>(); // íš¨ê³¼ìŒìš© AudioSource ì¶”ê°€
+            backgroundAudioSource = sound.GetComponent<AudioSource>(); // ë°°ê²½ìŒ ì „ìš© AudioSource ì°¸ì¡°
 
             if (!backgroundAudioSource.isPlaying)
             {
-                backgroundAudioSource.Play(); // ¹è°æÀ½ Àç»ı
-                DontDestroyOnLoad(sound); // ¹è°æÀ½ÀÌ °è¼Ó Àç»ıµÇ°Ô ¼³Á¤
+                backgroundAudioSource.Play(); // ë°°ê²½ìŒ ì¬ìƒ
+                DontDestroyOnLoad(sound); // ë°°ê²½ìŒì´ ê³„ì† ì¬ìƒë˜ê²Œ ì„¤ì •
             }
         }
         else
         {
-            Destroy(gameObject); // Áßº¹µÈ ÀÎ½ºÅÏ½º ÆÄ±«
+            Destroy(gameObject); // ì¤‘ë³µëœ ì¸ìŠ¤í„´ìŠ¤ íŒŒê´´
         }
     }
 
     private void Start()
     {
-        // SettingsData ÀÎ½ºÅÏ½º°¡ nullÀÌ ¾Æ´Ò °æ¿ì ÃÊ±â º¼·ı ¼³Á¤
+        // SettingsData ì¸ìŠ¤í„´ìŠ¤ê°€ nullì´ ì•„ë‹ ê²½ìš° ì´ˆê¸° ë³¼ë¥¨ ì„¤ì •
         if (SettingsData.instance != null)
         {
-            SetEffectVolume(SettingsData.instance.effectVolume); // ÃÊ±â È¿°úÀ½ º¼·ı ¼³Á¤
-            SetBackgroundVolume(SettingsData.instance.backgroundVolume); // ÃÊ±â ¹è°æÀ½ º¼·ı ¼³Á¤
+            SetEffectVolume(SettingsData.instance.effectVolume); // ì´ˆê¸° íš¨ê³¼ìŒ ë³¼ë¥¨ ì„¤ì •
+            SetBackgroundVolume(SettingsData.instance.backgroundVolume); // ì´ˆê¸° ë°°ê²½ìŒ ë³¼ë¥¨ ì„¤ì •
         }
         else
         {
-            Debug.LogError("SettingsData ÀÎ½ºÅÏ½º°¡ nullÀÔ´Ï´Ù. SettingsData°¡ ¸ÕÀú ÃÊ±âÈ­µÇ¾î¾ß ÇÕ´Ï´Ù.");
+            Debug.LogError("SettingsData ì¸ìŠ¤í„´ìŠ¤ê°€ nullì…ë‹ˆë‹¤. SettingsDataê°€ ë¨¼ì € ì´ˆê¸°í™”ë˜ì–´ì•¼ í•©ë‹ˆë‹¤.");
         }
     }
 
@@ -53,33 +53,33 @@ public class AudioManager : MonoBehaviour
     {
         if (clip != null)
         {
-            effectAudioSource.Stop(); // ÇöÀç Àç»ı ÁßÀÎ È¿°úÀ½ Áß´Ü
+            effectAudioSource.Stop(); // í˜„ì¬ ì¬ìƒ ì¤‘ì¸ íš¨ê³¼ìŒ ì¤‘ë‹¨
             effectAudioSource.clip = clip;
-            effectAudioSource.Play(); // »õ·Î¿î È¿°úÀ½ Àç»ı
+            effectAudioSource.Play(); // ìƒˆë¡œìš´ íš¨ê³¼ìŒ ì¬ìƒ
         }
         else
         {
-            Debug.LogError("È¿°úÀ½ Å¬¸³ÀÌ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("íš¨ê³¼ìŒ í´ë¦½ì´ í• ë‹¹ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
         }
     }
 
     public void SetEffectVolume(float volume)
     {
-        effectAudioSource.volume = volume; // È¿°úÀ½ º¼·ı ¼³Á¤
-        SettingsData.instance.effectVolume = volume; // ¼³Á¤ ÀúÀå
+        effectAudioSource.volume = volume; // íš¨ê³¼ìŒ ë³¼ë¥¨ ì„¤ì •
+        SettingsData.instance.effectVolume = volume; // ì„¤ì • ì €ì¥
     }
 
     public void SetBackgroundVolume(float volume)
     {
-        backgroundAudioSource.volume = volume; // ¹è°æÀ½ º¼·ı ¼³Á¤
-        SettingsData.instance.backgroundVolume = volume; // ¼³Á¤ ÀúÀå
+        backgroundAudioSource.volume = volume; // ë°°ê²½ìŒ ë³¼ë¥¨ ì„¤ì •
+        SettingsData.instance.backgroundVolume = volume; // ì„¤ì • ì €ì¥
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            PlayEffect(effectAudioClip); // TÅ°¸¦ ´©¸£¸é È¿°úÀ½ Àç»ı
+            PlayEffect(effectAudioClip); // Tí‚¤ë¥¼ ëˆ„ë¥´ë©´ íš¨ê³¼ìŒ ì¬ìƒ
         }
     }
 }

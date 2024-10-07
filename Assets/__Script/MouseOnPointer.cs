@@ -1,6 +1,6 @@
-/*
- * Æ©Åä¸®¾ó ¸¶¿ì½º Ãæµ¹·Î ÀÎÇÑ ¼³¸í¿¡ ¾µ°ÅÀÓ
- * Æ©Åä¸®¾ó Àü¿ë Panel¿¡ ³ÖÀ½
+ï»¿/*
+ * íŠœí† ë¦¬ì–¼ ë§ˆìš°ìŠ¤ ì¶©ëŒë¡œ ì¸í•œ ì„¤ëª…ì— ì“¸ê±°ì„
+ * íŠœí† ë¦¬ì–¼ ì „ìš© Panelì— ë„£ìŒ
  */
 
 using System.Collections;
@@ -9,30 +9,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEngine.Rendering.DebugUI;
 
-public class MouseOnPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // IPointerEnterHandler: ¸¶¿ì½º Ãæµ¹ ÇÔ¼ö , IPointerExitHandler: ¸¶¿ì½º Ãæµ¹ ¹üÀ§ ³ª°¥ ¶§ ÇÔ¼ö
+public class MouseOnPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // IPointerEnterHandler: ë§ˆìš°ìŠ¤ ì¶©ëŒ í•¨ìˆ˜ , IPointerExitHandler: ë§ˆìš°ìŠ¤ ì¶©ëŒ ë²”ìœ„ ë‚˜ê°ˆ ë•Œ í•¨ìˆ˜
 {
-    public GameObject panel; // ¶ç¿ì°í ½ÍÀº ÆĞ³Î
+    public GameObject panel; // ë„ìš°ê³  ì‹¶ì€ íŒ¨ë„
 
     void Start()
     {
-        panel.SetActive(false); // ÆĞ³Î ºñÈ°¼ºÈ­
+        panel.SetActive(false); // íŒ¨ë„ ë¹„í™œì„±í™”
     }
 
-    // ¸¶¿ì½º¸¦ ¹öÆ° À§¿¡ ¿Ã·ÈÀ» ¶§ ½ÇÇà
+    // ë§ˆìš°ìŠ¤ë¥¼ ë²„íŠ¼ ìœ„ì— ì˜¬ë ¸ì„ ë•Œ ì‹¤í–‰
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (panel != null)
         {
-            panel.SetActive(true); // ÆĞ³Î È°¼ºÈ­
+            panel.SetActive(true); // íŒ¨ë„ í™œì„±í™”
         }
     }
 
-    // ¸¶¿ì½º¸¦ ¹öÆ°¿¡¼­ ¶ÃÀ» ¶§ ½ÇÇà
+    // ë§ˆìš°ìŠ¤ë¥¼ ë²„íŠ¼ì—ì„œ ë—ì„ ë•Œ ì‹¤í–‰
     public void OnPointerExit(PointerEventData eventData)
     {
         if (panel != null)
         {
-            panel.SetActive(false); // ÆĞ³Î ºñÈ°¼ºÈ­
+            panel.SetActive(false); // íŒ¨ë„ ë¹„í™œì„±í™”
         }
     }
 }
