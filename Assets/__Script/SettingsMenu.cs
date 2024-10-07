@@ -130,7 +130,7 @@ public class SettingsMenu : MonoBehaviour
 
     void SetVolume(float volume)
     {
-        MusicManager.instance.SetBackgroundVolume(volume / 100f); // 사운드를 0~1 범위로 설정
+        AudioManager.instance.SetBackgroundVolume(volume / 100f); // 사운드를 0~1 범위로 설정
         backgroundVolumeText.text = volume.ToString("F0") + "%"; // 소수점 없이 슬라이더 값을 텍스트로 표시
         SettingsData.instance.backgroundVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
     }
