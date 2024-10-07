@@ -1,3 +1,7 @@
+ï»¿/* Playerê°€ ì¡´ì¬í•˜ëŠ” ëª¨ë“  ì”¬ ì•ˆì˜ Playerì— ë“¤ì–´ê°ˆ ìŠ¤í¬ë¦½íŠ¸
+ * í”Œë ˆì´ì–´ ì´ë™ ê¸°ëŠ¥
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,22 +28,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Ä«¸Ş¶ó ¹æÇâ º¤ÅÍ¸¦ °¡Á®¿É´Ï´Ù.
+        // ì¹´ë©”ë¼ ë°©í–¥ ë²¡í„°ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
         cameraForward = cameraControl.GetForwardDirection();
         cameraRight = cameraControl.GetRightDirection();
 
-        // ÀÔ·Â °ª ¹Ş¾Æ¿À±â
+        // ì…ë ¥ ê°’ ë°›ì•„ì˜¤ê¸°
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        // ÇÃ·¹ÀÌ¾î ÀÌµ¿ ¹æÇâ °è»ê
+        // í”Œë ˆì´ì–´ ì´ë™ ë°©í–¥ ê³„ì‚°
         moveDir = (cameraForward * vertical + cameraRight * horizontal).normalized;
     }
 
     private void FixedUpdate()
     {
         velocity = moveDir * moveSpeed;
-        // RigidbodyÀÇ yÃà ¼Óµµ´Â ÇöÀç ¼Óµµ¸¦ À¯Áö
+        // Rigidbodyì˜ yì¶• ì†ë„ëŠ” í˜„ì¬ ì†ë„ë¥¼ ìœ ì§€
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
     }
 }
