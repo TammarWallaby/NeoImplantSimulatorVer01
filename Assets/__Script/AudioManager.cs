@@ -1,6 +1,6 @@
 ﻿/*
- * 배경음, 효과음 지정
  * AudioManager 오브젝트에 넣을거임(빈 오브젝트)
+ * 배경음, 효과음 지정
  * DontDestroyOnLoad() 있음
  */
 

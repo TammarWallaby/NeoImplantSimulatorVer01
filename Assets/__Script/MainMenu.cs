@@ -1,6 +1,6 @@
 ﻿/*
- * 화면 전환 용도
  * 메인 화면 Canvus에 넣음
+ * 화면 전환 용도
  */
 
 using UnityEngine;
@@ -17,14 +17,10 @@ public class MainMenu : MonoBehaviour
     {
         // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
         //SceneManager.LoadScene("GameScene");
-        SceneManager.LoadScene("GameChoice");
+        SceneManager.LoadScene("Scene");
     }
 
-    public void TutorialsGame()
-    {
-        // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
-        SceneManager.LoadScene("TutorialsScene");
-    }
+
 
     public void IncisorGame()
     {

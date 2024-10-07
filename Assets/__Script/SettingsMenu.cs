@@ -1,6 +1,6 @@
 ﻿/* 
- * 환경설정 패널 + 시간정지 , 끝내기 '게임 종료'
  * 각종 Panel(Prefab으로) 들어감
+ * 환경설정 패널 + 시간정지 , 끝내기 '게임 종료'
  */
 
 using UnityEngine;
@@ -22,6 +22,7 @@ public class SettingsMenu : MonoBehaviour
 
     private PlayerControl playerMove; // 플레이어 움직임 제어 스크립트
     private MainCameraControl cameraRot;
+    private MouseOnPointer mousepointer;
 
     // displayedSensitivity를 클래스 변수로 선언
     private float displayedSensitivity;
@@ -29,6 +30,7 @@ public class SettingsMenu : MonoBehaviour
     {
         playerMove = FindObjectOfType<PlayerControl>(); // PlayerMove 스크립트 참조
         cameraRot = FindObjectOfType<MainCameraControl>(); // CameraRot 스크립트 참조
+        mousepointer = FindObjectOfType<MouseOnPointer>();
 
         Cursor.visible = false;
 
@@ -104,6 +106,11 @@ public class SettingsMenu : MonoBehaviour
         {
             TogglePause();
         }
+        if (mousepointer != null)
+        {
+            mousepointer.TutorialsPanel.SetActive(false);
+        }
+        Cursor.visible = true;
     }
 
     public void TogglePause()
@@ -163,9 +170,9 @@ public class SettingsMenu : MonoBehaviour
         Time.timeScale = 1; // 시간을 재개
         if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
         if (cameraRot != null) cameraRot.enabled = true;
-        Cursor.visible = true;
         //UnlockAllRotations(); // 모든 오브젝트 회전 재개
         SceneManager.LoadScene("MainMenu"); // MainMenu라는 씬으로 돌아감
+        Cursor.visible = true;
     }
     void OnSensitivityInputChanged(string input)
     {
@@ -203,7 +210,6 @@ public class SettingsMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("ESC key pressed"); // ESC 키 눌림 여부를 로그로 확인
             ToggleSettingsPanel(); // 패널 토글
         }
     }

@@ -1,6 +1,6 @@
 ﻿/*
- * 튜토리얼 마우스 충돌로 인한 설명에 쓸거임
  * 튜토리얼 전용 Panel에 넣음
+ * 튜토리얼 마우스 충돌로 인한 설명에 쓸거임
  */
 
 using System.Collections;
@@ -11,28 +11,44 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class MouseOnPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // IPointerEnterHandler: 마우스 충돌 함수 , IPointerExitHandler: 마우스 충돌 범위 나갈 때 함수
 {
-    public GameObject panel; // 띄우고 싶은 패널
+    public GameObject TutorialsPanel; //튜토 패널
+    public GameObject Expanel; // 설명 패널
+
 
     void Start()
     {
-        panel.SetActive(false); // 패널 비활성화
+        if (TutorialsPanel != null)
+        {
+            TutorialsPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("TutorialsPanel이 할당되지 않았습니다.");
+        }
+        Expanel.SetActive(false); // 패널 비활성화
     }
 
     // 마우스를 버튼 위에 올렸을 때 실행
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (panel != null)
+        if (Expanel != null)
         {
-            panel.SetActive(true); // 패널 활성화
+            Expanel.SetActive(true); // 패널 활성화
         }
     }
 
     // 마우스를 버튼에서 뗐을 때 실행
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (panel != null)
+        if (Expanel != null)
         {
-            panel.SetActive(false); // 패널 비활성화
+            Expanel.SetActive(false); // 패널 비활성화
         }
+    }
+
+    public void Tutorials()
+    {
+        TutorialsPanel.SetActive(true);
+        Cursor.visible = true;
     }
 }
