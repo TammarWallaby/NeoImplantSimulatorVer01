@@ -3,7 +3,17 @@ guid: 4ac30e05dda274d46a7495202f99c61f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antideslizante
+    second: {fileID: 2100000, guid: 829cc14a192b36e42908dda512ae358f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 24bfafbeb322b7945bfacb23ac6025ef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,17 @@ guid: 5f03098dd5b6451479684f6bdbd2df00
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antideslizante
+    second: {fileID: 2100000, guid: 829cc14a192b36e42908dda512ae358f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BandejaInstrumentos
+    second: {fileID: 2100000, guid: cd9594428474b144c9dbd33f676b6ea6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
