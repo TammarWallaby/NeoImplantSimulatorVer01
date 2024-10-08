@@ -6,9 +6,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OnMouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class OnMouse : MonoBehaviour, IPointerEnterHandler
 {
     public GameObject explanationPanel;  // 해당 버튼에 연결된 설명 패널
+    private static GameObject activePanel = null;  // 현재 활성화된 패널을 추적하는 변수
 
     private void Start()
     {
@@ -18,12 +19,15 @@ public class OnMouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // 마우스가 버튼에 들어왔을 때 호출
     public void OnPointerEnter(PointerEventData eventData)
     {
-        explanationPanel.SetActive(true);  // 설명 패널 활성화
+        // 이미 다른 패널이 활성화되어 있다면 비활성화
+        if (activePanel != null && activePanel != explanationPanel)
+        {
+            activePanel.SetActive(false);
+        }
+
+        explanationPanel.SetActive(true);  // 현재 버튼의 설명 패널 활성화
+        activePanel = explanationPanel;    // 활성화된 패널로 설정
     }
 
-    // 마우스가 버튼에서 나갔을 때 호출
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        explanationPanel.SetActive(false); // 설명 패널 비활성화
-    }
+
 }
