@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraControl: {fileID: 1276081818}
   moveSpeed: 5
+  tool: {fileID: 0}
 --- !u!114 &283261645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +411,8 @@ Transform:
   - {fileID: 6773305252264962792}
   - {fileID: 2946642942890151634}
   - {fileID: 4040579567469623053}
-  - {fileID: 6136709805911781665}
   - {fileID: 352253603953445620}
+  - {fileID: 6136709805911781665}
   - {fileID: 6006649014795904401}
   - {fileID: 8292498881428137799}
   - {fileID: 6004537846783346638}
@@ -6546,7 +6547,7 @@ GameObject:
   - component: {fileID: 7660700656923403597}
   - component: {fileID: 5599295817200800135}
   m_Layer: 0
-  m_Name: BandejaInstrumentos
+  m_Name: Tray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
