@@ -107,7 +107,7 @@ public class SettingsMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void TogglePause()
+    public void TogglePause() 
     {
         isPaused = !isPaused;
 
@@ -129,14 +129,14 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    void SetVolume(float volume)
+    void SetVolume(float volume) //배경음
     {
         AudioManager.instance.SetBackgroundVolume(volume / 100f); // 사운드를 0~1 범위로 설정
         backgroundVolumeText.text = volume.ToString("F0") + "%"; // 소수점 없이 슬라이더 값을 텍스트로 표시
         SettingsData.instance.backgroundVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
     }
 
-    void SetMouseSensitivity(float sensitivity)
+    void SetMouseSensitivity(float sensitivity) //마우스 감도
     {
         SettingsData.instance.mouseSensitivity = sensitivity; // 마우스 감도 값을 SettingsData에 저장
 
@@ -152,21 +152,21 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    void SetEffectVolume(float volume)
+    void SetEffectVolume(float volume) //효과음
     {
         AudioManager.instance.SetEffectVolume(volume / 100f); // 사운드를 0~1 범위로 설정
         effectVolumeValueText.text = volume.ToString("F0") + "%"; // 소수점 없이 슬라이더 값을 텍스트로 표시
         SettingsData.instance.backgroundVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
     }
 
-    public void ReturnToMainMenu()
+    public void ReturnToMainMenu() // 메인메뉴로 돌아가기
     {
         Time.timeScale = 1; // 시간을 재개
         if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
         if (cameraRot != null) cameraRot.enabled = true;
-        //UnlockAllRotations(); // 모든 오브젝트 회전 재개
-        SceneManager.LoadScene("MainMenu"); // MainMenu라는 씬으로 돌아감
+
         Cursor.visible = true;
+        SceneManager.LoadScene("MainMenu"); // MainMenu라는 씬으로 돌아감
     }
     void OnSensitivityInputChanged(string input)
     {

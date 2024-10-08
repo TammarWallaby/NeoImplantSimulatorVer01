@@ -15,19 +15,19 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        tutorialPanel.SetActive(false);
-        startPanel.SetActive(false);
+        tutorialPanel.SetActive(false); //시작 시, 튜토리얼 패널 비활성화
+        startPanel.SetActive(false); //시작 시, 스타트 패널 비활성화
     }
 
     public void OnTutorialButtonClick()
     {
-        tutorialPanel.SetActive(true);
+        tutorialPanel.SetActive(true);//튜토리얼 패널 활성화
         Cursor.visible = true;
     }
 
-    public void OnStartButtonClick()
+    public void OnStartButtonClick() 
     {
-        startPanel.SetActive(true);
+        startPanel.SetActive(true);//스타트 패널 활성화
         Cursor.visible = true;
     }
 
