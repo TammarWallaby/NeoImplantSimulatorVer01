@@ -1,6 +1,6 @@
-/*
- * TutoriaCanvas ¾È¿¡ÀÖ´Â Æ©Åä¸®¾ó Á¾·ù ¹öÆ°¸¶´Ù ³ÖÀ»°ÅÀÓ
- * Æ©Åä¸®¾ó ¼³¸í ÆĞ³Î ¿­±â ´İ±â 
+ï»¿/*
+ * MainCanvas ì•ˆì—ìˆëŠ” íŠœí† ë¦¬ì–¼ ì¢…ë¥˜ ë²„íŠ¼ë§ˆë‹¤ ë„£ì„ê±°ì„
+ * íŠœí† ë¦¬ì–¼ ì„¤ëª… íŒ¨ë„ ì—´ê¸° ë‹«ê¸° 
  */
 
 using UnityEngine;
@@ -8,22 +8,22 @@ using UnityEngine.EventSystems;
 
 public class OnMouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject explanationPanel;  // ÇØ´ç ¹öÆ°¿¡ ¿¬°áµÈ ¼³¸í ÆĞ³Î
+    public GameObject explanationPanel;  // í•´ë‹¹ ë²„íŠ¼ì— ì—°ê²°ëœ ì„¤ëª… íŒ¨ë„
 
     private void Start()
     {
-        explanationPanel.SetActive(false); // ¼³¸í ÆĞ³Î ºñÈ°¼ºÈ­
+        explanationPanel.SetActive(false); // ì„¤ëª… íŒ¨ë„ ë¹„í™œì„±í™”
     }
 
-    // ¸¶¿ì½º°¡ ¹öÆ°¿¡ µé¾î¿ÔÀ» ¶§ È£Ãâ
+    // ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ì— ë“¤ì–´ì™”ì„ ë•Œ í˜¸ì¶œ
     public void OnPointerEnter(PointerEventData eventData)
     {
-        explanationPanel.SetActive(true);  // ¼³¸í ÆĞ³Î È°¼ºÈ­
+        explanationPanel.SetActive(true);  // ì„¤ëª… íŒ¨ë„ í™œì„±í™”
     }
 
-    // ¸¶¿ì½º°¡ ¹öÆ°¿¡¼­ ³ª°¬À» ¶§ È£Ãâ
+    // ë§ˆìš°ìŠ¤ê°€ ë²„íŠ¼ì—ì„œ ë‚˜ê°”ì„ ë•Œ í˜¸ì¶œ
     public void OnPointerExit(PointerEventData eventData)
     {
-        explanationPanel.SetActive(false); // ¼³¸í ÆĞ³Î ºñÈ°¼ºÈ­
+        explanationPanel.SetActive(false); // ì„¤ëª… íŒ¨ë„ ë¹„í™œì„±í™”
     }
 }

@@ -11,10 +11,12 @@ using UnityEngine.UI; // UI 요소를 관리하기 위한 네임스페이스
 public class MainMenu : MonoBehaviour
 {
     public GameObject tutorialPanel;
+    public GameObject startPanel;
 
     private void Start()
     {
         tutorialPanel.SetActive(false);
+        startPanel.SetActive(false);
     }
 
     public void OnTutorialButtonClick()
@@ -23,25 +25,22 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
-    // 시작하기 버튼을 클릭했을 때 호출될 함수
-    public void StartGame()
+    public void OnStartButtonClick()
     {
-        // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
-        //SceneManager.LoadScene("GameScene");
-        SceneManager.LoadScene("Scene");
+        startPanel.SetActive(true);
+        Cursor.visible = true;
     }
-
 
 
     public void IncisorGame()
     {
         // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
-        SceneManager.LoadScene("AlphaTestScene");
+        SceneManager.LoadScene("Test");
     }
 
     public void MolarGame()
     {
         // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
-        SceneManager.LoadScene("AlphaTestScene");
+        SceneManager.LoadScene("Test");
     }
 }
