@@ -19,17 +19,11 @@ public class SettingsMenu : MonoBehaviour
     public Text effectVolumeValueText; // 효과음 슬라이더 값 표시 텍스트 , 설정필수
     public InputField sensitivityInputField; // 마우스 감도를 입력할 InputField , 설정필수
 
-    public bool isPaused = false;
-
-    private PlayerControl playerMove; // 플레이어 움직임 제어 스크립트
-    private MainCameraControl cameraRot;
 
     // displayedSensitivity를 클래스 변수로 선언
     private float displayedSensitivity;
     void Start()
     {
-        playerMove = FindObjectOfType<PlayerControl>(); // PlayerMove 스크립트 참조
-        cameraRot = FindObjectOfType<MainCameraControl>(); // CameraRot 스크립트 참조
 
         // 설정 패널 숨기기
         if (settingsPanel != null)
@@ -96,37 +90,9 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleSettingsPanel()
     {
         settingsPanel.SetActive(!settingsPanel.activeSelf); //패널 활성화
-        Time.timeScale = 1; // 시간을 재개
-        if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
-        if (cameraRot != null) cameraRot.enabled = true;
-        if (SceneManager.GetActiveScene().name != "MainMenu")
-        {
-            TogglePause();
-        }
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void TogglePause() 
-    {
-        isPaused = !isPaused;
-
-        // 게임을 일시 정지하고 모든 오브젝트의 동작을 멈춤
-        if (isPaused)
-        {
-            Time.timeScale = 0; // 시간을 정지
-            if (playerMove != null) playerMove.enabled = false; // 플레이어 움직임 비활성화
-            if (cameraRot != null) cameraRot.enabled = false;
-            Cursor.lockState = CursorLockMode.Confined;
-            //CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
-        }
-        else
-        {
-            Time.timeScale = 1; // 시간을 재개
-            if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
-            if (cameraRot != null) cameraRot.enabled = true;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
+   
 
     void SetVolume(float volume) //배경음
     {
@@ -144,11 +110,6 @@ public class SettingsMenu : MonoBehaviour
         sensitivityValueText.text = displayedSensitivity.ToString("F2"); // 텍스트로 표시
         sensitivityInputField.text = displayedSensitivity.ToString("F2"); // InputField에도 표시
 
-        // MainCameraControl에 마우스 감도 값 설정
-        if (cameraRot != null)
-        {
-            cameraRot.SetMouseSensitivity(sensitivity);
-        }
     }
 
     void SetEffectVolume(float volume) //효과음
@@ -161,8 +122,7 @@ public class SettingsMenu : MonoBehaviour
     public void ReturnToMainMenu() // 메인메뉴로 돌아가기
     {
         Time.timeScale = 1; // 시간을 재개
-        if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
-        if (cameraRot != null) cameraRot.enabled = true;
+
 
         Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("MainMenu"); // MainMenu라는 씬으로 돌아감
@@ -201,6 +161,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Update()
     {
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleSettingsPanel(); // 패널 토글
