@@ -10,7 +10,11 @@ using UnityEngine.UI; // UI 요소를 관리하기 위한 네임스페이스
 
 public class MainMenu : MonoBehaviour
 {
-
+    public GameObject TutorialsPanel;
+    private void Start()
+    {
+        TutorialsPanel.SetActive(false);
+    }
 
     // 시작하기 버튼을 클릭했을 때 호출될 함수
     public void StartGame()
@@ -32,5 +36,10 @@ public class MainMenu : MonoBehaviour
     {
         // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
         SceneManager.LoadScene("AlphaTestScene");
+    }
+
+    public void TutorialsGame()
+    {
+        TutorialsPanel.SetActive(true);
     }
 }

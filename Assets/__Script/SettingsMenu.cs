@@ -22,7 +22,7 @@ public class SettingsMenu : MonoBehaviour
 
     private PlayerControl playerMove; // 플레이어 움직임 제어 스크립트
     private MainCameraControl cameraRot;
-    private MouseOnPointer mousepointer;
+    private MainMenu mousepointer;
 
     // displayedSensitivity를 클래스 변수로 선언
     private float displayedSensitivity;
@@ -30,7 +30,7 @@ public class SettingsMenu : MonoBehaviour
     {
         playerMove = FindObjectOfType<PlayerControl>(); // PlayerMove 스크립트 참조
         cameraRot = FindObjectOfType<MainCameraControl>(); // CameraRot 스크립트 참조
-        mousepointer = FindObjectOfType<MouseOnPointer>();
+        mousepointer = FindObjectOfType<MainMenu>();
 
         Cursor.visible = false;
 
@@ -106,7 +106,7 @@ public class SettingsMenu : MonoBehaviour
         {
             TogglePause();
         }
-        if (mousepointer != null)
+        if (mousepointer != null && mousepointer.TutorialsPanel.activeSelf)
         {
             mousepointer.TutorialsPanel.SetActive(false);
         }
