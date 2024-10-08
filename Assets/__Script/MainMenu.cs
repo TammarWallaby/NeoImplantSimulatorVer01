@@ -22,13 +22,13 @@ public class MainMenu : MonoBehaviour
     public void OnTutorialButtonClick()
     {
         tutorialPanel.SetActive(true);//튜토리얼 패널 활성화
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void OnStartButtonClick() 
     {
         startPanel.SetActive(true);//스타트 패널 활성화
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 
