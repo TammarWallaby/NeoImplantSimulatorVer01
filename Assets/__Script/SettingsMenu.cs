@@ -164,7 +164,10 @@ public class SettingsMenu : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleSettingsPanel(); // 패널 토글
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                ToggleSettingsPanel(); // 패널 토글
+            }
         }
     }
 }
