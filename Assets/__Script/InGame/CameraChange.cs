@@ -1,0 +1,131 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class CameraChange : MonoBehaviour
+{
+    public bool toolsColliderIn;
+    public bool surgeryColliderIn;
+    public bool isSequencePlaying;
+
+    public Camera mainCam;
+    public Camera surgeryCam;
+    public Camera toolsCam;
+
+    public PlayerController playerController;
+    public MainCamController mainCamController;
+    Rigidbody playerRB;
+
+    public Sequence mainToSurgerySequence;
+    public Sequence surgeryToMainSequence;
+    public Sequence mainToToolsSequence;
+    public Sequence toolsToMainSequence;
+
+    public Vector3 mainCamPosition;
+    public Vector3 mainCamRotation;
+
+    private void Awake()
+    {
+        playerRB = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        surgeryCam.enabled = false;
+        toolsCam.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)&&playerRB.velocity==Vector3.zero&&isSequencePlaying==false)
+        {
+            if (surgeryColliderIn)
+            {
+                if (mainCam.enabled)
+                {
+                    mainCamPosition= mainCam.transform.position;
+                    mainCamRotation = mainCam.transform.eulerAngles;
+                    mainToSurgerySequence = DOTween.Sequence()
+                    .AppendCallback(() =>
+                    {
+                        isSequencePlaying = true;
+                        playerController.enabled = false;
+                        mainCamController.enabled = false;
+                    })
+                    .Append(mainCam.transform.DOMove(surgeryCam.transform.position, 2f))
+                    .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
+                    .AppendCallback(() =>
+                    {
+                        mainCam.enabled = false;
+                        surgeryCam.enabled = true;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        isSequencePlaying = false;
+                    });
+                }
+                else if (surgeryCam.enabled)
+                {
+                    surgeryToMainSequence = DOTween.Sequence()
+                    .AppendCallback(() =>
+                    {
+                        isSequencePlaying = true;
+                        surgeryCam.enabled = false;
+                        mainCam.enabled = true;
+                        Cursor.lockState = CursorLockMode.Locked;
+                    })
+                    .Append(mainCam.transform.DOMove(mainCamPosition, 2f))
+                    .Join(mainCam.transform.DORotate(mainCamRotation, 2f))
+                    .AppendCallback(() =>
+                    {
+                        playerController.enabled = true;
+                        mainCamController.enabled = true;
+                        isSequencePlaying = false;
+                    });
+                }
+            }
+            //else if (toolsColliderIn)
+            //{
+            //    mainCam.enabled = !mainCam.enabled;
+            //    toolsCam.enabled = !toolsCam.enabled;
+            //    if (mainCam.enabled)
+            //    {
+            //        playerController.enabled = true;
+            //        mainCamController.enabled = true;
+            //        Cursor.lockState = CursorLockMode.Locked;
+            //    }
+            //    else if (toolsCam.enabled)
+            //    {
+            //        playerController.enabled = false;
+            //        mainCamController.enabled = false;
+            //        Cursor.lockState = CursorLockMode.Confined;
+            //    }
+            //}
+        }
+    }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="Patient")
+        {
+            surgeryColliderIn = true;
+        }
+        else if (other.tag == "Tools")
+        {
+            toolsColliderIn = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Patient")
+        {
+            surgeryColliderIn = false;
+        }
+        else if (other.tag == "Tools")
+        {
+            toolsColliderIn = false;
+        }
+    }
+}

@@ -1,72 +1,35 @@
+ï»¿/* Playerê°€ ì¡´ì¬í•˜ëŠ” ëª¨ë“  ì”¬ì˜ MainCameraì— ë“¤ì–´ê°ˆ ìŠ¤í¬ë¦½íŠ¸
+ * ë©”ì¸ì¹´ë©”ë¼ ì‹œì  ì¡°ì‘ ê¸°ëŠ¥
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCamController : MonoBehaviour
 {
-    public float mouseSpeed; // È¸Àü¼Óµµ, ¼³Á¤ ÇÊ¼ö
-    public float upLimit; // À§ÂÊ ÇÑ°è°ª, ¼³Á¤ ÇÊ¼ö
-    public float downLimit; // ¾Æ·¡ÂÊ ÇÑ°è°ª, ¼³Á¤ ÇÊ¼ö
+    public float mouseSpeed; // íšŒì „ì†ë„, ì„¤ì • í•„ìˆ˜
+    public float upLimit; // ìœ„ìª½ í•œê³„ê°’, ì„¤ì • í•„ìˆ˜
+    public float downLimit; // ì•„ë˜ìª½ í•œê³„ê°’, ì„¤ì • í•„ìˆ˜
 
-    private float mouseX; //ÁÂ¿ì È¸Àü°ª
-    private float mouseY; //À§¾Æ·¡ È¸Àü°ª
+    private float mouseX; //ì¢Œìš° íšŒì „ê°’
+    private float mouseY; //ìœ„ì•„ë˜ íšŒì „ê°’
 
     void Start()
     {
-        // ¸¶¿ì½º¸¦ Áß¾Ó¿¡ °íÁ¤ÇÏ°í ¼û±è
+        // ë§ˆìš°ìŠ¤ë¥¼ ì¤‘ì•™ì— ê³ ì •í•˜ê³  ìˆ¨ê¹€
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        //¸¶¿ì½º È¸Àü Ã³¸®
+        //ë§ˆìš°ìŠ¤ íšŒì „ ì²˜ë¦¬
         mouseX += Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
         mouseY += Input.GetAxis("Mouse Y") * mouseSpeed * Time.deltaTime;
 
         mouseY = Mathf.Clamp(mouseY, downLimit, upLimit);
         this.transform.localEulerAngles = new Vector3(-mouseY, mouseX, 0);
-
-        //if (Input.GetMouseButtonDown(0)) // ÁÂÅ¬¸¯ ½Ã
-        //{
-        //    Ray ray = new Ray(transform.position, transform.forward);
-        //    RaycastHit hit;
-
-        //    Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.red, 2f); // 2ÃÊ µ¿¾È ·¹ÀÌ¸¦ ±×¸³´Ï´Ù.
-
-        //    if (Physics.Raycast(ray, out hit, maxRayDistance, toolsLayer))
-        //    {
-        //        PickUpObject(hit.collider.transform);
-        //    }
-        //    else if (Physics.Raycast(ray, out hit, maxRayDistance, trayLayer))
-        //    {
-        //        PutDownObject();
-        //    }
-        //}
     }
-
-    //private void PickUpObject(Transform objectTransform)
-    //{
-    //    if (heldObject == null)
-    //    {
-    //        toolsOriginalPosition = objectTransform.position;
-    //        heldObject = objectTransform; // ¿ÀºêÁ§Æ®¸¦ Áã±â
-    //        heldObject.SetParent(transform); // Ä«¸Ş¶óÀÇ ÀÚ½ÄÀ¸·Î ¼³Á¤
-    //        heldObject.localPosition = new Vector3(0.28f, -0.14f, 0.362f);
-    //        heldObject.localRotation = Quaternion.Euler(-1.46f, 73.778f, -48.861f);
-    //    }
-    //}
-
-    //private void PutDownObject()
-    //{
-    //    if (heldObject != null)
-    //    {
-    //        heldObject.SetParent(onTrayTools.transform);
-    //        heldObject.position = toolsOriginalPosition;
-    //        heldObject.localRotation = Quaternion.Euler(0, 0, 0);
-
-    //        heldObject = null;
-    //    }
-    //}
 
     public Vector3 GetForwardDirection()
     {
@@ -80,6 +43,6 @@ public class MainCamController : MonoBehaviour
 
     public void SetMouseSensitivity(float sensitivity)
     {
-        mouseSpeed = sensitivity; // ½½¶óÀÌ´õ °ªÀ¸·Î ¸¶¿ì½º °¨µµ ¼³Á¤
+        mouseSpeed = sensitivity; // ìŠ¬ë¼ì´ë” ê°’ìœ¼ë¡œ ë§ˆìš°ìŠ¤ ê°ë„ ì„¤ì •
     }
 }
