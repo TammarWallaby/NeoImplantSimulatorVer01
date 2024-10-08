@@ -27,6 +27,7 @@ public class SettingManager : MonoBehaviour
                 Time.timeScale = 0;
                 playerController.enabled = false;
                 Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
                 if (cameraChange.mainCam.enabled)
                 {
                     mainCamController.enabled = false;
@@ -43,17 +44,15 @@ public class SettingManager : MonoBehaviour
             else
             {
                 Time.timeScale = 1;
-                playerController.enabled = true;          
                 if (cameraChange.mainCam.enabled)
                 {
-                    Cursor.lockState = CursorLockMode.Locked;
                     mainCamController.enabled = true;
-                    
+                    Cursor.lockState = CursorLockMode.Locked;
+                    playerController.enabled = true;
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
                     //surgeryCamController.enabled=true;
-                    Cursor.lockState = CursorLockMode.Confined;
                     Cursor.visible = false;
                 }
                 else if (cameraChange.toolsCam.enabled)

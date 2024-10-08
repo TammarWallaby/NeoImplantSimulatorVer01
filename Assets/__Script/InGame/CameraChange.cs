@@ -60,6 +60,7 @@ public class CameraChange : MonoBehaviour
                         mainCam.enabled = false;
                         surgeryCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
                         isSequencePlaying = false;
                     });
                 }
@@ -103,12 +104,13 @@ public class CameraChange : MonoBehaviour
                         mainCam.enabled = false;
                         toolsCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
                         isSequencePlaying = false;
                     });
                 }
                 else if (toolsCam.enabled)
                 {
-                    surgeryToMainSequence = DOTween.Sequence()
+                    toolsToMainSequence = DOTween.Sequence()
                     .AppendCallback(() =>
                     {
                         isSequencePlaying = true;
