@@ -56,7 +56,6 @@ public class OverClear : MonoBehaviour
         if (clearPanel != null)
         {
             clearPanel.SetActive(true); // 클리어 패널 표시
-            Debug.Log("Clear Panel 활성화");
         }
     }
 
@@ -74,14 +73,14 @@ public class OverClear : MonoBehaviour
          
             GameOver(); // 게임 오버 함수 호출
             Time.timeScale = 1;
-            Cursor.visible = true; 
+            Cursor.lockState = CursorLockMode.Confined;
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
            
             GameClear(); // 게임 클리어 함수 호출
             Time.timeScale = 1;
-            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }

@@ -31,8 +31,6 @@ public class SettingsMenu : MonoBehaviour
         playerMove = FindObjectOfType<PlayerControl>(); // PlayerMove 스크립트 참조
         cameraRot = FindObjectOfType<MainCameraControl>(); // CameraRot 스크립트 참조
 
-        Cursor.visible = false;
-
         // 설정 패널 숨기기
         if (settingsPanel != null)
         {
@@ -105,7 +103,7 @@ public class SettingsMenu : MonoBehaviour
         {
             TogglePause();
         }
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void TogglePause() 
@@ -118,7 +116,7 @@ public class SettingsMenu : MonoBehaviour
             Time.timeScale = 0; // 시간을 정지
             if (playerMove != null) playerMove.enabled = false; // 플레이어 움직임 비활성화
             if (cameraRot != null) cameraRot.enabled = false;
-            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             //CursorControl.SetPosition(new Vector2(Screen.width / 2, Screen.height / 2));
         }
         else
@@ -126,7 +124,7 @@ public class SettingsMenu : MonoBehaviour
             Time.timeScale = 1; // 시간을 재개
             if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
             if (cameraRot != null) cameraRot.enabled = true;
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -166,7 +164,7 @@ public class SettingsMenu : MonoBehaviour
         if (playerMove != null) playerMove.enabled = true; // 플레이어 움직임 활성화
         if (cameraRot != null) cameraRot.enabled = true;
 
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("MainMenu"); // MainMenu라는 씬으로 돌아감
     }
     void OnSensitivityInputChanged(string input)

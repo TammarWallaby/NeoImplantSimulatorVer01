@@ -6,6 +6,7 @@ public class FrameFix : MonoBehaviour
 {
     private void Awake()
     {
+
         Application.targetFrameRate = 60;
     }
 }
