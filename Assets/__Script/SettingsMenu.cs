@@ -106,10 +106,6 @@ public class SettingsMenu : MonoBehaviour
         {
             TogglePause();
         }
-        if (mousepointer != null && mousepointer.TutorialsPanel.activeSelf)
-        {
-            mousepointer.TutorialsPanel.SetActive(false);
-        }
         Cursor.visible = true;
     }
 
