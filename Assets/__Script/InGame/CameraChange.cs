@@ -83,23 +83,49 @@ public class CameraChange : MonoBehaviour
                     });
                 }
             }
-            //else if (toolsColliderIn)
-            //{
-            //    mainCam.enabled = !mainCam.enabled;
-            //    toolsCam.enabled = !toolsCam.enabled;
-            //    if (mainCam.enabled)
-            //    {
-            //        playerController.enabled = true;
-            //        mainCamController.enabled = true;
-            //        Cursor.lockState = CursorLockMode.Locked;
-            //    }
-            //    else if (toolsCam.enabled)
-            //    {
-            //        playerController.enabled = false;
-            //        mainCamController.enabled = false;
-            //        Cursor.lockState = CursorLockMode.Confined;
-            //    }
-            //}
+            else if (toolsColliderIn)
+            {
+                if (mainCam.enabled)
+                {
+                    mainCamPosition = mainCam.transform.position;
+                    mainCamRotation = mainCam.transform.eulerAngles;
+                    mainToToolsSequence = DOTween.Sequence()
+                    .AppendCallback(() =>
+                    {
+                        isSequencePlaying = true;
+                        playerController.enabled = false;
+                        mainCamController.enabled = false;
+                    })
+                    .Append(mainCam.transform.DOMove(toolsCam.transform.position, 2f))
+                    .Join(mainCam.transform.DORotate(toolsCam.transform.eulerAngles, 2f))
+                    .AppendCallback(() =>
+                    {
+                        mainCam.enabled = false;
+                        toolsCam.enabled = true;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        isSequencePlaying = false;
+                    });
+                }
+                else if (toolsCam.enabled)
+                {
+                    surgeryToMainSequence = DOTween.Sequence()
+                    .AppendCallback(() =>
+                    {
+                        isSequencePlaying = true;
+                        toolsCam.enabled = false;
+                        mainCam.enabled = true;
+                        Cursor.lockState = CursorLockMode.Locked;
+                    })
+                    .Append(mainCam.transform.DOMove(mainCamPosition, 2f))
+                    .Join(mainCam.transform.DORotate(mainCamRotation, 2f))
+                    .AppendCallback(() =>
+                    {
+                        playerController.enabled = true;
+                        mainCamController.enabled = true;
+                        isSequencePlaying = false;
+                    });
+                }
+            }
         }
     }
 
