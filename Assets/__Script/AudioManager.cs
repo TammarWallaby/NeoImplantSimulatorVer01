@@ -2,6 +2,7 @@
  * AudioManager 오브젝트에 넣을거임(빈 오브젝트)
  * 배경음, 효과음 지정
  * DontDestroyOnLoad() 있음
+ * 효과음은 임시로 'T' 누르면 나오게 했음
  */
 
 using UnityEngine;
