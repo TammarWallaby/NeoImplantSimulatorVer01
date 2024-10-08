@@ -30,10 +30,6 @@ public class SettingsMenu : MonoBehaviour
         {
             settingsPanel.SetActive(false);
         }
-        else
-        {
-            Debug.LogError("settingsPanel이 할당되지 않았습니다.");
-        }
 
         // 마우스 감도 슬라이더 설정
         if (mouseSensitivitySlider != null)
@@ -90,9 +86,8 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleSettingsPanel()
     {
         settingsPanel.SetActive(!settingsPanel.activeSelf); //패널 활성화
-    }
 
-   
+    }
 
     void SetVolume(float volume) //배경음
     {
@@ -116,7 +111,7 @@ public class SettingsMenu : MonoBehaviour
     {
         AudioManager.instance.SetEffectVolume(volume / 100f); // 사운드를 0~1 범위로 설정
         effectVolumeValueText.text = volume.ToString("F0") + "%"; // 소수점 없이 슬라이더 값을 텍스트로 표시
-        SettingsData.instance.backgroundVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
+        SettingsData.instance.effectVolume = volume / 100f; // 볼륨 값을 SettingsData에 저장
     }
 
     public void ReturnToMainMenu() // 메인메뉴로 돌아가기
@@ -139,10 +134,6 @@ public class SettingsMenu : MonoBehaviour
             mouseSensitivitySlider.value = sensitivity; // 슬라이더 값을 업데이트
 
             SetMouseSensitivity(sensitivity); // 마우스 감도 업데이트
-        }
-        else
-        {
-            Debug.LogError("잘못된 입력 값입니다.");
         }
     }
 
