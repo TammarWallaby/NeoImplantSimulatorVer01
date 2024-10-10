@@ -15,8 +15,8 @@ public class OverClear : MonoBehaviour
     private bool isGameOver = false;
     private bool isGameCleared = false;
 
-    private bool processCorrect = true; // 임플란트 과정이 올바른지 여부
-    private bool processFailed = false; // 과정이 실패했는지 여부
+    public bool processCorrect = true; // 임플란트 과정이 올바른지 여부
+    public bool processFailed = false; // 과정이 실패했는지 여부
 
     void Start()
     {
@@ -35,67 +35,49 @@ public class OverClear : MonoBehaviour
     private void Update()
     {
         // 게임 오버 조건 확인
-        if (CheckGameOver())
+        /* if (특정 조건)
         {
-            GameOver(); // 게임 오버 함수 호출
-        }
+            ProcessGameOver(true); // 게임 오버 처리
+        }*/
 
-        // 게임 클리어 조건 확인
-        if (CheckGameClear())
+        // 특정 조건에서 과정이 성공한 경우
+        /*if (특정 조건)
         {
-            GameClear(); // 게임 클리어 함수 호출
-        }
+            ProcessGameOver(true); // 게임 클리어 처리
+        }*/
     }
-    private bool CheckGameOver()
+    public void ProcessGameOver(bool hasFailed)
     {
-        return processFailed; // 과정이 실패한 경우
-    }
-    private bool CheckGameClear()
-    {
-        return processCorrect; // 모든 과정이 올바른 경우
-    }
-    public void ProcessFailed()
-    {
-        processFailed = true; // 과정 실패로 상태 변경
-        GameOver(); // 게임 오버 호출
-    }
+        if (hasFailed)
+        {
+            if (isGameOver) return; // 이미 게임이 끝났다면 처리하지 않음
 
-    // 과정이 올바른 경우 호출
-    public void ProcessSucceeded()
-    {
-        processCorrect = true; // 과정이 올바른 것으로 상태 변경
-                                        // 모든 과정이 끝났을 때 클리어 조건 체크
-        if (CheckGameClear())
-        {
-            GameClear(); // 게임 클리어 호출
+            processFailed = true; // 과정 실패로 상태 변경
+            isGameOver = true; // 게임 오버 상태로 설정
+
+            Cursor.visible = true; // 마우스 커서 보이기
+
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true); // 게임 오버 패널 표시
+            }
         }
     }
-    // 게임 오버 처리
-    public void GameOver()
+    public void ProcessGameClear(bool isSuccess)
     {
-        if (isGameOver) return; // 이미 게임이 끝났다면 처리하지 않음
-
-        isGameOver = true;
-        Cursor.visible = true; // 마우스 커서 보이기
-
-        if (gameOverPanel != null)
+        if (isSuccess)
         {
-            gameOverPanel.SetActive(true); // 게임 오버 패널 표시
+            if (isGameCleared) return; // 이미 클리어된 상태라면 처리하지 않음
 
-        }
-    }
+            processCorrect = true; // 과정이 올바른 것으로 상태 변경
+            isGameCleared = true; // 게임 클리어 상태로 설정
 
-    // 게임 클리어 처리
-    public void GameClear()
-    {
-        if (isGameCleared) return; // 이미 클리어된 상태라면 처리하지 않음
+            Cursor.visible = true; // 마우스 커서 보이기
 
-        isGameCleared = true;
-        Cursor.visible = true; // 마우스 커서 보이기
-
-        if (clearPanel != null)
-        {
-            clearPanel.SetActive(true); // 클리어 패널 표시
+            if (clearPanel != null)
+            {
+                clearPanel.SetActive(true); // 클리어 패널 표시
+            }
         }
     }
 
