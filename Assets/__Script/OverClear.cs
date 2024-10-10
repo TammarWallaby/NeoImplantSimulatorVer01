@@ -1,7 +1,7 @@
 ﻿/*
  * GameOver, Clear 패널이 있는 Canvus에 넣을거임
  * 게임오버 + 클리어 창 뜨기, 다시하기, (종료랑 메인메뉴는 SettingMenu에서 활용) 
- * 임시로 e 누르면 게임오버 , c누르면 클리어 창 뜸
+ * Update()에 if 문에 특정 상황 넣으면 됨 
  */
 
 using UnityEngine;
@@ -12,8 +12,8 @@ public class OverClear : MonoBehaviour
     public GameObject gameOverPanel; // 실패 시 보여줄 패널
     public GameObject clearPanel;    // 클리어 시 보여줄 패널
 
-    private bool isGameOver = false;
-    private bool isGameCleared = false;
+    public bool isGameOver = false;
+    public bool isGameCleared = false;
 
     public bool processCorrect = true; // 임플란트 과정이 올바른지 여부
     public bool processFailed = false; // 과정이 실패했는지 여부
@@ -37,16 +37,17 @@ public class OverClear : MonoBehaviour
         // 게임 오버 조건 확인
         /* if (특정 조건)
         {
-            ProcessGameOver(true); // 게임 오버 처리
+            GameOver(true); // 게임 오버 처리
         }*/
 
         // 특정 조건에서 과정이 성공한 경우
         /*if (특정 조건)
         {
-            ProcessGameOver(true); // 게임 클리어 처리
+            GameClear(true); // 게임 클리어 처리
         }*/
+        CheckImplantProcess();
     }
-    public void ProcessGameOver(bool hasFailed)
+    public void GameOver(bool hasFailed)
     {
         if (hasFailed)
         {
@@ -63,7 +64,7 @@ public class OverClear : MonoBehaviour
             }
         }
     }
-    public void ProcessGameClear(bool isSuccess)
+    public void GameClear(bool isSuccess)
     {
         if (isSuccess)
         {
@@ -90,14 +91,14 @@ public class OverClear : MonoBehaviour
 
     public void CheckImplantProcess()
     {
-        // 조건이 잘못된 경우
-        /*if (특정 조건이 잘못된 경우)
+        // 특정 조건을 체크합니다 (예: processFailed와 processCorrect 변수에 따라)
+        if (processFailed) // 조건이 잘못된 경우
         {
-            ProcessFailed(); // 과정 실패 호출
+            GameOver(true); // 과정 실패 호출
         }
-        else
+        else if (processCorrect) // 과정이 성공한 경우
         {
-            ProcessSucceeded(); // 과정 성공 호출
-        }*/
+            GameClear(true); // 과정 성공 호출
+        }
     }
 }
