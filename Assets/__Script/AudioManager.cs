@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
         // 특정 조건에 따라 인덱스를 전달해 적절한 효과음 재생
         if (SomeGameConditionIsMet())
         {
-            //AudioManager.instance.PlayEffect(사용할 효과음); // (다른 스크립트에도 가능) 특정 조건 매서드에 이런식으로 적으면 됨
+            //AudioManager.instance.PlayEffect(사용할 효과음 배열); // (다른 스크립트에도 가능) 특정 조건 매서드에 이런식으로 적으면 됨
             PlayEffect(effectIndex); // 조건이 충족되면 효과음 재생
         }
     }

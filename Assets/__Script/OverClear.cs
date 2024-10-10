@@ -15,6 +15,9 @@ public class OverClear : MonoBehaviour
     private bool isGameOver = false;
     private bool isGameCleared = false;
 
+    private bool processCorrect = true; // 임플란트 과정이 올바른지 여부
+    private bool processFailed = false; // 과정이 실패했는지 여부
+
     void Start()
     {
         // 처음 시작 시 패널 비활성화
@@ -29,7 +32,44 @@ public class OverClear : MonoBehaviour
         }
 
     }
+    private void Update()
+    {
+        // 게임 오버 조건 확인
+        if (CheckGameOver())
+        {
+            GameOver(); // 게임 오버 함수 호출
+        }
 
+        // 게임 클리어 조건 확인
+        if (CheckGameClear())
+        {
+            GameClear(); // 게임 클리어 함수 호출
+        }
+    }
+    private bool CheckGameOver()
+    {
+        return processFailed; // 과정이 실패한 경우
+    }
+    private bool CheckGameClear()
+    {
+        return processCorrect; // 모든 과정이 올바른 경우
+    }
+    public void ProcessFailed()
+    {
+        processFailed = true; // 과정 실패로 상태 변경
+        GameOver(); // 게임 오버 호출
+    }
+
+    // 과정이 올바른 경우 호출
+    public void ProcessSucceeded()
+    {
+        processCorrect = true; // 과정이 올바른 것으로 상태 변경
+                                        // 모든 과정이 끝났을 때 클리어 조건 체크
+        if (CheckGameClear())
+        {
+            GameClear(); // 게임 클리어 호출
+        }
+    }
     // 게임 오버 처리
     public void GameOver()
     {
@@ -66,21 +106,16 @@ public class OverClear : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 현재 씬 재시작
     }
 
-    private void Update()
+    public void CheckImplantProcess()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        // 조건이 잘못된 경우
+        /*if (특정 조건이 잘못된 경우)
         {
-         
-            GameOver(); // 게임 오버 함수 호출
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Confined;
+            ProcessFailed(); // 과정 실패 호출
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        else
         {
-           
-            GameClear(); // 게임 클리어 함수 호출
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
+            ProcessSucceeded(); // 과정 성공 호출
+        }*/
     }
 }

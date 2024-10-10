@@ -6094,8 +6094,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectAudioSource: {fileID: 0}
   backgroundAudioSource: {fileID: 0}
-  effectAudioClip: {fileID: 8300000, guid: a5b707b6ab741e049ba81e2a9ce4de72, type: 3}
-  backSound: {fileID: 8300000, guid: 5f6d6469073922b4e8b0d360f26b2679, type: 3}
+  effectAudioClips:
+  - {fileID: 8300000, guid: da292d82b3109004d97a4d9d0b1b2913, type: 3}
+  - {fileID: 8300000, guid: d03438714ad2ed3429b269d9a07ad11a, type: 3}
+  backSound: {fileID: 8300000, guid: 664f51a542f16de46b8965bc33517b12, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
