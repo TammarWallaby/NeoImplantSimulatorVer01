@@ -25,6 +25,9 @@ public class CameraChange : MonoBehaviour
     public Vector3 mainCamPosition;
     public Vector3 mainCamRotation;
 
+    public GameObject heldTool;
+    public GameObject heldDrill;
+
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -52,6 +55,8 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = true;
                         playerController.enabled = false;
                         mainCamController.enabled = false;
+                        heldTool.SetActive(false);
+                        heldDrill.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(surgeryCam.transform.position, 2f))
                     .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
@@ -81,6 +86,8 @@ public class CameraChange : MonoBehaviour
                         playerController.enabled = true;
                         mainCamController.enabled = true;
                         isSequencePlaying = false;
+                        heldTool.SetActive(true);
+                        heldDrill.SetActive(true);
                     });
                 }
             }
