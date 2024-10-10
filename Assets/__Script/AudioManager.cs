@@ -2,49 +2,49 @@
  * AudioManager 오브젝트에 넣을거임(빈 오브젝트)
  * 배경음, 효과음 지정
  * DontDestroyOnLoad() 있음
- * 효과음은 임시로 'T' 누르면 나오게 했음
+ * 특정 상황 메서드에 AudioManager.instance.PlayEffect(사용할 배열); 쓰면 효과음 들림
  */
 
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance; // 싱글턴 인스턴스 , 설정 필수
-    public AudioSource effectAudioSource; // 효과음 전용 오디오 소스 , 설정 필수
-    public AudioSource backgroundAudioSource; // 배경음 전용 오디오 소스 , 설정 필수
-    public AudioClip effectAudioClip; // 효과음 클립 , 설정 필수
-    public AudioClip backSound; // 배경음악 클립 , 설정 필수
+    public static AudioManager instance;
+    public AudioSource effectAudioSource;
+    public AudioSource backgroundAudioSource;
+    public AudioClip[] effectAudioClips; // 여러 효과음 클립을 배열로 관리
+    public AudioClip backSound;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 전환 시 파괴되지 않음
-            effectAudioSource = gameObject.AddComponent<AudioSource>(); // 효과음용 AudioSource 추가
-            backgroundAudioSource = gameObject.AddComponent<AudioSource>(); // 배경음용 AudioSource 추가
+            DontDestroyOnLoad(gameObject);
 
-            backgroundAudioSource.clip = backSound; // 배경음 클립 할당
+            effectAudioSource = gameObject.AddComponent<AudioSource>();
+            backgroundAudioSource = gameObject.AddComponent<AudioSource>();
+
+            backgroundAudioSource.clip = backSound;
+            backgroundAudioSource.loop = true;
 
             if (!backgroundAudioSource.isPlaying)
             {
-                backgroundAudioSource.Play(); // 배경음 재생
-                DontDestroyOnLoad(gameObject); // AudioManager 오브젝트 유지
+                backgroundAudioSource.Play();
             }
         }
         else
         {
-            Destroy(gameObject); // 중복된 인스턴스 파괴
+            Destroy(gameObject);
         }
     }
 
     private void Start()
     {
-        // SettingsData 인스턴스가 null이 아닐 경우 초기 볼륨 설정
         if (SettingsData.instance != null)
         {
-            SetEffectVolume(SettingsData.instance.effectVolume); // 초기 효과음 볼륨 설정
-            SetBackgroundVolume(SettingsData.instance.backgroundVolume); // 초기 배경음 볼륨 설정
+            SetEffectVolume(SettingsData.instance.effectVolume);
+            SetBackgroundVolume(SettingsData.instance.backgroundVolume);
         }
         else
         {
@@ -52,37 +52,46 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayEffect(AudioClip clip)
+    public void PlayEffect(int clipIndex)
     {
-        if (clip != null)
+        if (effectAudioClips != null && clipIndex >= 0 && clipIndex < effectAudioClips.Length)
         {
-            effectAudioSource.Stop(); // 현재 재생 중인 효과음 중단
-            effectAudioSource.clip = clip;
-            effectAudioSource.Play(); // 새로운 효과음 재생
+            effectAudioSource.Stop();
+            effectAudioSource.clip = effectAudioClips[clipIndex];
+            effectAudioSource.Play();
         }
         else
         {
-            Debug.LogError("효과음 클립이 할당되지 않았습니다.");
+            Debug.LogError("잘못된 효과음 클립 인덱스이거나 클립이 설정되지 않았습니다.");
         }
     }
 
     public void SetEffectVolume(float volume)
     {
-        effectAudioSource.volume = volume; // 효과음 볼륨 설정
-        SettingsData.instance.effectVolume = volume; // 설정 저장
+        effectAudioSource.volume = volume;
+        SettingsData.instance.effectVolume = volume;
     }
 
     public void SetBackgroundVolume(float volume)
     {
-        backgroundAudioSource.volume = volume; // 배경음 볼륨 설정
-        SettingsData.instance.backgroundVolume = volume; // 설정 저장
+        backgroundAudioSource.volume = volume;
+        SettingsData.instance.backgroundVolume = volume;
     }
 
-    private void Update()
+    // 특정 상황에서 효과음을 재생하는 메서드 예시
+    public void TriggerSoundEffectOnEvent(int effectIndex)
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        // 특정 조건에 따라 인덱스를 전달해 적절한 효과음 재생
+        if (SomeGameConditionIsMet())
         {
-            PlayEffect(effectAudioClip); // T키를 누르면 효과음 재생
+            //AudioManager.instance.PlayEffect(사용할 효과음); // (다른 스크립트에도 가능) 특정 조건 매서드에 이런식으로 적으면 됨
+            PlayEffect(effectIndex); // 조건이 충족되면 효과음 재생
         }
+    }
+
+    private bool SomeGameConditionIsMet()
+    {
+        // 특정 게임 조건을 체크하는 로직 구현
+        return true; // 조건이 맞으면 true 반환
     }
 }
