@@ -1,7 +1,7 @@
 ﻿/*
  * GameOver, Clear 패널이 있는 Canvus에 넣을거임
  * 게임오버 + 클리어 창 뜨기, 다시하기, (종료랑 메인메뉴는 SettingMenu에서 활용) 
- * 임시로 e 누르면 게임오버 , c누르면 클리어 창 뜸
+ * Update()에 if 문에 특정 상황 넣으면 됨 
  */
 
 using UnityEngine;
@@ -12,11 +12,11 @@ public class OverClear : MonoBehaviour
     public GameObject gameOverPanel; // 실패 시 보여줄 패널
     public GameObject clearPanel;    // 클리어 시 보여줄 패널
 
-    private bool isGameOver = false;
-    private bool isGameCleared = false;
+    public bool isGameOver = false;
+    public bool isGameCleared = false;
 
-    private bool processCorrect = true; // 임플란트 과정이 올바른지 여부
-    private bool processFailed = false; // 과정이 실패했는지 여부
+    public bool processCorrect = false; // 임플란트 과정이 올바른지 여부
+    public bool processFailed = false; // 과정이 실패했는지 여부
 
     void Start()
     {
@@ -35,67 +35,50 @@ public class OverClear : MonoBehaviour
     private void Update()
     {
         // 게임 오버 조건 확인
-        if (CheckGameOver())
+        /* if (특정 조건)
         {
-            GameOver(); // 게임 오버 함수 호출
-        }
+            GameOver(true); // 게임 오버 처리
+        }*/
 
-        // 게임 클리어 조건 확인
-        if (CheckGameClear())
+        // 특정 조건에서 과정이 성공한 경우
+        /*if (특정 조건)
         {
-            GameClear(); // 게임 클리어 함수 호출
-        }
+            GameClear(true); // 게임 클리어 처리
+        }*/
+        CheckImplantProcess();
     }
-    private bool CheckGameOver()
+    public void GameOver(bool hasFailed)
     {
-        return processFailed; // 과정이 실패한 경우
-    }
-    private bool CheckGameClear()
-    {
-        return processCorrect; // 모든 과정이 올바른 경우
-    }
-    public void ProcessFailed()
-    {
-        processFailed = true; // 과정 실패로 상태 변경
-        GameOver(); // 게임 오버 호출
-    }
+        if (hasFailed)
+        {
+            if (isGameOver) return; // 이미 게임이 끝났다면 처리하지 않음
 
-    // 과정이 올바른 경우 호출
-    public void ProcessSucceeded()
-    {
-        processCorrect = true; // 과정이 올바른 것으로 상태 변경
-                                        // 모든 과정이 끝났을 때 클리어 조건 체크
-        if (CheckGameClear())
-        {
-            GameClear(); // 게임 클리어 호출
+            processFailed = true; // 과정 실패로 상태 변경
+            isGameOver = true; // 게임 오버 상태로 설정
+
+            Cursor.visible = true; // 마우스 커서 보이기
+
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true); // 게임 오버 패널 표시
+            }
         }
     }
-    // 게임 오버 처리
-    public void GameOver()
+    public void GameClear(bool isSuccess)
     {
-        if (isGameOver) return; // 이미 게임이 끝났다면 처리하지 않음
-
-        isGameOver = true;
-        Cursor.visible = true; // 마우스 커서 보이기
-
-        if (gameOverPanel != null)
+        if (isSuccess)
         {
-            gameOverPanel.SetActive(true); // 게임 오버 패널 표시
+            if (isGameCleared) return; // 이미 클리어된 상태라면 처리하지 않음
 
-        }
-    }
+            processCorrect = true; // 과정이 올바른 것으로 상태 변경
+            isGameCleared = true; // 게임 클리어 상태로 설정
 
-    // 게임 클리어 처리
-    public void GameClear()
-    {
-        if (isGameCleared) return; // 이미 클리어된 상태라면 처리하지 않음
+            Cursor.visible = true; // 마우스 커서 보이기
 
-        isGameCleared = true;
-        Cursor.visible = true; // 마우스 커서 보이기
-
-        if (clearPanel != null)
-        {
-            clearPanel.SetActive(true); // 클리어 패널 표시
+            if (clearPanel != null)
+            {
+                clearPanel.SetActive(true); // 클리어 패널 표시
+            }
         }
     }
 
@@ -108,14 +91,14 @@ public class OverClear : MonoBehaviour
 
     public void CheckImplantProcess()
     {
-        // 조건이 잘못된 경우
-        /*if (특정 조건이 잘못된 경우)
+        // 특정 조건을 체크합니다 (예: processFailed와 processCorrect 변수에 따라)
+        if (processFailed) // 조건이 잘못된 경우
         {
-            ProcessFailed(); // 과정 실패 호출
+            GameOver(true); // 과정 실패 호출
         }
-        else
+        else if (processCorrect) // 과정이 성공한 경우
         {
-            ProcessSucceeded(); // 과정 성공 호출
-        }*/
+            GameClear(true); // 과정 성공 호출
+        }
     }
 }
