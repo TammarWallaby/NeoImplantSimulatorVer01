@@ -5801,6 +5801,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 737209220535706117, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1589024944938402673, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6094,17 +6098,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectAudioSource: {fileID: 0}
   backgroundAudioSource: {fileID: 0}
-  effectAudioClip: {fileID: 8300000, guid: a5b707b6ab741e049ba81e2a9ce4de72, type: 3}
+  effectAudioClips: []
   backSound: {fileID: 8300000, guid: 5f6d6469073922b4e8b0d360f26b2679, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 963194228}
-  - {fileID: 1515256752}
-  - {fileID: 157092632}
-  - {fileID: 1954874457938723950}
   - {fileID: 7826784518961070327}
   - {fileID: 3399575602897725370}
+  - {fileID: 157092632}
+  - {fileID: 1515256752}
+  - {fileID: 1954874457938723950}
   - {fileID: 169667508}
   - {fileID: 419289471}
