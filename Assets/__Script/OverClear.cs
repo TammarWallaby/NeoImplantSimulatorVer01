@@ -15,7 +15,7 @@ public class OverClear : MonoBehaviour
     public bool isGameOver = false;
     public bool isGameCleared = false;
 
-    public bool processCorrect = true; // 임플란트 과정이 올바른지 여부
+    public bool processCorrect = false; // 임플란트 과정이 올바른지 여부
     public bool processFailed = false; // 과정이 실패했는지 여부
 
     void Start()
