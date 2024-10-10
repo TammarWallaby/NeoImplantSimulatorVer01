@@ -18,7 +18,7 @@ public class OverClear : MonoBehaviour
     public bool processCorrect = false; // 임플란트 과정이 올바른지 여부
     public bool processFailed = false; // 과정이 실패했는지 여부
 
-    void Start()
+    void Awake()
     {
         // 처음 시작 시 패널 비활성화
         if (gameOverPanel != null)
@@ -34,18 +34,18 @@ public class OverClear : MonoBehaviour
     }
     private void Update()
     {
-        // 게임 오버 조건 확인
-        /* if (특정 조건)
+        // 키 입력에 따라 게임 오버 및 클리어 처리
+        if (Input.GetKeyDown(KeyCode.E)) // E 키를 눌렀을 때
         {
             GameOver(true); // 게임 오버 처리
-        }*/
+        }
 
-        // 특정 조건에서 과정이 성공한 경우
-        /*if (특정 조건)
+        if (Input.GetKeyDown(KeyCode.C)) // C 키를 눌렀을 때
         {
             GameClear(true); // 게임 클리어 처리
-        }*/
-        CheckImplantProcess();
+        }
+
+        CheckImplantProcess(); // 임플란트 과정 체크
     }
     public void GameOver(bool hasFailed)
     {
@@ -56,7 +56,7 @@ public class OverClear : MonoBehaviour
             processFailed = true; // 과정 실패로 상태 변경
             isGameOver = true; // 게임 오버 상태로 설정
 
-            Cursor.visible = true; // 마우스 커서 보이기
+            Cursor.lockState = CursorLockMode.Confined;
 
             if (gameOverPanel != null)
             {
@@ -73,7 +73,7 @@ public class OverClear : MonoBehaviour
             processCorrect = true; // 과정이 올바른 것으로 상태 변경
             isGameCleared = true; // 게임 클리어 상태로 설정
 
-            Cursor.visible = true; // 마우스 커서 보이기
+            Cursor.lockState = CursorLockMode.Confined;
 
             if (clearPanel != null)
             {
