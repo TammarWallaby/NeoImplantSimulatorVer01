@@ -387,6 +387,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1456910729}
   clearPanel: {fileID: 482161650}
+  isGameOver: 0
+  isGameCleared: 0
+  processCorrect: 0
+  processFailed: 0
 --- !u!1 &222165530
 GameObject:
   m_ObjectHideFlags: 0

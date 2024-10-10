@@ -55,8 +55,10 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = true;
                         playerController.enabled = false;
                         mainCamController.enabled = false;
-                        heldTool.SetActive(false);
-                        heldDrill.SetActive(false);
+                        heldTool.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        heldDrill.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        //heldTool.SetActive(false);
+                        //heldDrill.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(surgeryCam.transform.position, 2f))
                     .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
@@ -86,8 +88,12 @@ public class CameraChange : MonoBehaviour
                         playerController.enabled = true;
                         mainCamController.enabled = true;
                         isSequencePlaying = false;
-                        heldTool.SetActive(true);
-                        heldDrill.SetActive(true);
+                        //heldTool.SetActive(true);
+                        //heldDrill.SetActive(true);
+                        heldTool.transform.localScale = new Vector3(1f, 1f, 1f);
+                        heldDrill.transform.localScale = new Vector3(1f, 1f, 1f);
+                        heldTool.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);
+                        heldDrill.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);
                     });
                 }
             }
@@ -146,7 +152,7 @@ public class CameraChange : MonoBehaviour
         {
             surgeryColliderIn = true;
         }
-        else if (other.tag == "Tools")
+        else if (other.tag == "ToolsSetting")
         {
             toolsColliderIn = true;
         }
@@ -158,7 +164,7 @@ public class CameraChange : MonoBehaviour
         {
             surgeryColliderIn = false;
         }
-        else if (other.tag == "Tools")
+        else if (other.tag == "ToolsSetting")
         {
             toolsColliderIn = false;
         }
