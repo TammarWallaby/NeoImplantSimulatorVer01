@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraControl: {fileID: 1276081818}
-  moveSpeed: 5
+  moveSpeed: 2
   tool: {fileID: 0}
 --- !u!114 &283261645
 MonoBehaviour:
