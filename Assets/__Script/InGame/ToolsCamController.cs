@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ToolsCamController : MonoBehaviour
 {
+    public SettingManager settingManager;
+
     public Camera toolsCam;
     public Transform heldToolTransform;
     public Transform heldDrillTransform;
@@ -26,31 +28,34 @@ public class ToolsCamController : MonoBehaviour
 
     private void Update()
     {
-        if (toolsCam.enabled == true && Input.GetMouseButtonDown(0)) // esc 켜져있을때 못하게 추가해야됨
-        {
-
-            Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            Debug.DrawRay(ray.origin, ray.direction * pickUpRange, Color.red, 3.0f); // 2초 동안 빨간색 Ray 표시
-
-
-            if (Physics.Raycast(ray, out hit, pickUpRange))
+        //if (!settingManager.isSettingPanelOn)
+        //{
+            if (toolsCam.enabled == true && Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.CompareTag("Tools"))
+
+                Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                Debug.DrawRay(ray.origin, ray.direction * pickUpRange, Color.red, 3.0f); // 2초 동안 빨간색 Ray 표시
+
+
+                if (Physics.Raycast(ray, out hit, pickUpRange))
                 {
-                    PickUpTool(hit.collider.gameObject);
-                }
-                if (hit.collider.CompareTag("Drill"))
-                {
-                    PickUpDrill(hit.collider.gameObject);
-                }
-                if (hit.collider.CompareTag("Tray"))
-                {
-                    DropTool();
+                    if (hit.collider.CompareTag("Tools"))
+                    {
+                        PickUpTool(hit.collider.gameObject);
+                    }
+                    if (hit.collider.CompareTag("Drill"))
+                    {
+                        PickUpDrill(hit.collider.gameObject);
+                    }
+                    if (hit.collider.CompareTag("Tray"))
+                    {
+                        DropTool();
+                    }
                 }
             }
-        }
+        //}
     }
 
     void PickUpTool(GameObject tool)

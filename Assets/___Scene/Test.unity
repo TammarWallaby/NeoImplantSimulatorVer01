@@ -1062,6 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b638fa4199f5e446a2fadb7e1c24598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingManager: {fileID: 2089582576}
   toolsCam: {fileID: 632037232}
   heldToolTransform: {fileID: 745655880}
   heldDrillTransform: {fileID: 1929270066}
@@ -2611,6 +2612,8 @@ MonoBehaviour:
   cameraChange: {fileID: 283261645}
   playerController: {fileID: 283261644}
   mainCamController: {fileID: 1276081818}
+  surgeryCamController: {fileID: 606919372}
+  toolsCamController: {fileID: 632037234}
   isSettingPanelOn: 0
 --- !u!1 &10165582693791205
 GameObject:
@@ -13638,14 +13641,14 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2089582575}
   - {fileID: 283261642}
-  - {fileID: 632037233}
   - {fileID: 606919371}
+  - {fileID: 632037233}
   - {fileID: 5173828411914511245}
   - {fileID: 1804450835}
   - {fileID: 375948976}
   - {fileID: 3485381717571001608}
-  - {fileID: 2089582575}
   - {fileID: 632991181}
   - {fileID: 1285149128}
   - {fileID: 379393968}
