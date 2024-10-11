@@ -5925,7 +5925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundVolume: 1
   effectVolume: 1
-  mouseSensitivity: 120
+  mouseSensitivity: 60
 --- !u!114 &5234899781695892434
 MonoBehaviour:
   m_ObjectHideFlags: 0

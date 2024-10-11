@@ -57,8 +57,8 @@ public class CameraChange : MonoBehaviour
                         mainCamController.enabled = false;
                         heldTool.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                         heldDrill.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                        //heldTool.SetActive(false);
-                        //heldDrill.SetActive(false);
+                        heldTool.SetActive(false);
+                        heldDrill.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(surgeryCam.transform.position, 2f))
                     .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
@@ -67,8 +67,10 @@ public class CameraChange : MonoBehaviour
                         mainCam.enabled = false;
                         surgeryCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Confined;
-                        Cursor.visible = true;
+                        Cursor.visible = false;
                         isSequencePlaying = false;
+                        heldTool.SetActive(true);
+                        heldDrill.SetActive(true);
                     });
                 }
                 else if (surgeryCam.enabled)
@@ -80,6 +82,8 @@ public class CameraChange : MonoBehaviour
                         surgeryCam.enabled = false;
                         mainCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Locked;
+                        heldTool.SetActive(false);
+                        heldDrill.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(mainCamPosition, 2f))
                     .Join(mainCam.transform.DORotate(mainCamRotation, 2f))
@@ -88,8 +92,8 @@ public class CameraChange : MonoBehaviour
                         playerController.enabled = true;
                         mainCamController.enabled = true;
                         isSequencePlaying = false;
-                        //heldTool.SetActive(true);
-                        //heldDrill.SetActive(true);
+                        heldTool.SetActive(true);
+                        heldDrill.SetActive(true);
                         heldTool.transform.localScale = new Vector3(1f, 1f, 1f);
                         heldDrill.transform.localScale = new Vector3(1f, 1f, 1f);
                         heldTool.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);

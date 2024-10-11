@@ -8,6 +8,8 @@ public class SettingManager : MonoBehaviour
     public CameraChange cameraChange;
     public PlayerController playerController;
     public MainCamController mainCamController;
+    public SurgeryCamController surgeryCamController;
+    public ToolsCamController toolsCamController;
 
     public bool isSettingPanelOn;
 
@@ -34,11 +36,11 @@ public class SettingManager : MonoBehaviour
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    //surgeryCamController.enabled=false;
+                    surgeryCamController.enabled=false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    //toolsCamController.enabled=false;
+                    toolsCamController.enabled=false;
                 }
             }
             else
@@ -52,12 +54,12 @@ public class SettingManager : MonoBehaviour
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    //surgeryCamController.enabled=true;
+                    surgeryCamController.enabled=true;
                     Cursor.visible = false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    //toolsCamController.enabled=true;
+                    toolsCamController.enabled=true;
                 }
             }
         }
