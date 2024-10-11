@@ -2147,7 +2147,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "WASD : \uC774\uB3D9\r\n\uBA48\uCD94\uACE0 \uC2A4\uD398\uC774\uC2A4\uBC14
     : \uB3C4\uAD6C \uBC0F \uD658\uC790\uC5D0\uAC8C \uCE74\uBA54\uB77C \uC774\uB3D9\r\n\uC88C\uD074\uB9AD
-    : \uB3C4\uAD6C \uC9D1\uAE30/\uB193\uAE30"
+    : \uB3C4\uAD6C \uC9D1\uAE30/\uB193\uAE30\n\uC218\uC220 \uAE30\uB2A5 \uBBF8\uAD6C\uD604"
 --- !u!222 &1400084445
 CanvasRenderer:
   m_ObjectHideFlags: 0
