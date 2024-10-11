@@ -46,9 +46,19 @@ public class AudioManager : MonoBehaviour
             SetEffectVolume(SettingsData.instance.effectVolume);
             SetBackgroundVolume(SettingsData.instance.backgroundVolume);
         }
-        else
+    }
+    private void Update()
+    {
+        // R 버튼을 눌렀을 때 효과음 재생
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.LogError("SettingsData 인스턴스가 null입니다. SettingsData가 먼저 초기화되어야 합니다.");
+            PlayEffect(0); // 효과음 배열의 첫 번째 효과음 재생 (인덱스를 원하는 값으로 설정)
+        }
+
+        // T 버튼을 눌렀을 때 효과음 재생
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            PlayEffect(1); // 효과음 배열의 두 번째 효과음 재생 (인덱스를 원하는 값으로 설정)
         }
     }
 
@@ -59,10 +69,6 @@ public class AudioManager : MonoBehaviour
             effectAudioSource.Stop();
             effectAudioSource.clip = effectAudioClips[clipIndex];
             effectAudioSource.Play();
-        }
-        else
-        {
-            Debug.LogError("잘못된 효과음 클립 인덱스이거나 클립이 설정되지 않았습니다.");
         }
     }
 
