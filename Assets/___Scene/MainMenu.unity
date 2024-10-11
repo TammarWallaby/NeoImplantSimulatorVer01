@@ -1333,7 +1333,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1161444466}
+  otherImage: {fileID: 0}
   fadeDuration: 2
+  imageDuration: 0
+  delayDuration: 0
+  fadeTriggerThreshold: 0.5
 --- !u!114 &419289468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2483,7 +2487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 371.8859, y: 40}
+  m_AnchoredPosition: {x: 428, y: 0.000016212}
   m_SizeDelta: {x: 555.8141, y: 188.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &767670350
@@ -5842,7 +5846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -441, y: 40}
+  m_AnchoredPosition: {x: -408.7, y: 0.0012131}
   m_SizeDelta: {x: 531.2234, y: 188.8224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709078539
