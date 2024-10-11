@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraChange: {fileID: 283261645}
   surgeryCam: {fileID: 606919370}
-  distanceFromCamera: 0.03
+  distanceFromCamera: 0.02
 --- !u!1 &632037229
 GameObject:
   m_ObjectHideFlags: 0
