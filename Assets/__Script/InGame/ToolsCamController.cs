@@ -1,9 +1,16 @@
+/* Player가 있는 모든 씬의 ToolsCamera에 들어갈 스크립트
+ * 도구카메라에서 도구 및 드릴을 집거나 놓는 역할
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ToolsCamController : MonoBehaviour
 {
+    public SettingManager settingManager;
+
     public Camera toolsCam;
     public Transform heldToolTransform;
     public Transform heldDrillTransform;
@@ -26,7 +33,7 @@ public class ToolsCamController : MonoBehaviour
 
     private void Update()
     {
-        if (toolsCam.enabled == true && Input.GetMouseButtonDown(0)) // esc 켜져있을때 못하게 추가해야됨
+        if (toolsCam.enabled == true && Input.GetMouseButtonDown(0))
         {
 
             Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);

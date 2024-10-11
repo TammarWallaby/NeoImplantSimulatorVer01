@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/* Player가 있는 모든 씬의 SettingManager에 들어갈 스크립트
+ * 설정창을 열었을 때, 카메라 기능 비활성화
+ * 설정창을 열면 안되는 시점 추가
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +14,8 @@ public class SettingManager : MonoBehaviour
     public CameraChange cameraChange;
     public PlayerController playerController;
     public MainCamController mainCamController;
+    public SurgeryCamController surgeryCamController;
+    public ToolsCamController toolsCamController;
 
     public bool isSettingPanelOn;
 
@@ -34,11 +42,11 @@ public class SettingManager : MonoBehaviour
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    //surgeryCamController.enabled=false;
+                    surgeryCamController.enabled=false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    //toolsCamController.enabled=false;
+                    toolsCamController.enabled=false;
                 }
             }
             else
@@ -52,12 +60,12 @@ public class SettingManager : MonoBehaviour
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    //surgeryCamController.enabled=true;
+                    surgeryCamController.enabled=true;
                     Cursor.visible = false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    //toolsCamController.enabled=true;
+                    toolsCamController.enabled=true;
                 }
             }
         }
