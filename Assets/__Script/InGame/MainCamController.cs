@@ -1,5 +1,5 @@
-﻿/* Player가 존재하는 모든 씬의 MainCamera에 들어갈 스크립트
- * 메인카메라 시점 조작 기능
+﻿/* Player가 있는 모든 씬의 MainCamera에 들어갈 스크립트
+ * 메인카메라 시점 및 감도 조작 기능
  */
 
 using System.Collections;

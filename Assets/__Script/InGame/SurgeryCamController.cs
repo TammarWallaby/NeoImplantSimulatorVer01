@@ -1,3 +1,9 @@
+/* Player가 있는 모든 씬의 SurgeryCamera에 들어갈 스크립트
+ * 온갖 수술 관련 기능 추가 예정
+ * 마우스커서에 도구가 따라오게 하는 기능
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

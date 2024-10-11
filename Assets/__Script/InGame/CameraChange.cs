@@ -1,3 +1,8 @@
+/* Player가 있는 모든 씬의 Player에 들어갈 스크립트
+ * 카메라 변경 기능(카메라 변경 조건 포함), 자연스러운 화면 전환
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

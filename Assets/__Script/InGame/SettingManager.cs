@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/* Player가 있는 모든 씬의 SettingManager에 들어갈 스크립트
+ * 설정창을 열었을 때, 카메라 기능 비활성화
+ * 설정창을 열면 안되는 시점 추가
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
