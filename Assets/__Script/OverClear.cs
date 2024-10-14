@@ -35,7 +35,7 @@ public class OverClear : MonoBehaviour
     private void Update()
     {
         // 키 입력에 따라 게임 오버 및 클리어 처리
-        if (Input.GetKeyDown(KeyCode.E)) // E 키를 눌렀을 때
+        if (Input.GetKeyDown(KeyCode.G)) // G 키를 눌렀을 때
         {
             GameOver(true); // 게임 오버 처리
         }
