@@ -89,22 +89,25 @@ public class ToolsCamController : MonoBehaviour
 
     void PickUpDrill(GameObject drill)
     {
-        if (currentTool.gameObject.name == "ToolHandpiece")
+        if (currentTool != null)
         {
-            if (currentDrill != null)
+            if (currentTool.gameObject.name == "ToolHandpiece")
             {
-                currentDrill.GetComponent<Collider>().enabled = true;
-                currentDrill.transform.SetParent(toolsTransform);
-                currentDrill.transform.position = drillsOriginPosition;
-                currentDrill.transform.rotation = Quaternion.identity;
-                currentDrill = null; // 현재 드릴 초기화
+                if (currentDrill != null)
+                {
+                    currentDrill.GetComponent<Collider>().enabled = true;
+                    currentDrill.transform.SetParent(toolsTransform);
+                    currentDrill.transform.position = drillsOriginPosition;
+                    currentDrill.transform.rotation = Quaternion.identity;
+                    currentDrill = null; // 현재 드릴 초기화
+                }
+                currentDrill = drill;
+                currentDrill.GetComponent<Collider>().enabled = false;
+                drillsOriginPosition = drill.transform.position;
+                drill.transform.SetParent(heldDrillTransform);
+                drill.transform.localPosition = Vector3.zero;
+                drill.transform.localRotation = Quaternion.identity;
             }
-            currentDrill = drill;
-            currentDrill.GetComponent<Collider>().enabled = false;
-            drillsOriginPosition = drill.transform.position;
-            drill.transform.SetParent(heldDrillTransform);
-            drill.transform.localPosition = Vector3.zero;
-            drill.transform.localRotation = Quaternion.identity;
         }
     }
 
