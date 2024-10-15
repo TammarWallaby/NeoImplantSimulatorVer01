@@ -123,6 +123,7 @@ public class SurgeryCamController : MonoBehaviour
                                         // 마취 시퀀스
                                         this.enabled = true;
                                         currentState = SurgeryState.IncisionOne;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -139,6 +140,7 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsOne.SetActive(true); // 나중에 시퀀스 대체
                                         this.enabled = true;
                                         currentState = SurgeryState.IncisionTwo;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -153,6 +155,7 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsTwo.SetActive(true);
                                         this.enabled = true;
                                         currentState=SurgeryState.IncisionThree;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -167,6 +170,7 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsThree.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.ElevationOne;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -181,6 +185,7 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsFour.SetActive(true);
                                         this.enabled = true;
                                         currentState= SurgeryState.ElevationTwo;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -195,6 +200,7 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsFive.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.DrillSmall;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -211,6 +217,7 @@ public class SurgeryCamController : MonoBehaviour
                                             dientesTwo.SetActive(true);
                                             this.enabled = true;
                                             currentState = SurgeryState.DrillMedium;
+                                            Debug.Log("성공!");
                                         }
                                         else
                                         {
@@ -232,6 +239,7 @@ public class SurgeryCamController : MonoBehaviour
                                             dientesThree.SetActive(true);
                                             this.enabled = true;
                                             currentState = SurgeryState.DrillLarge;
+                                            Debug.Log("성공!");
                                         }
                                         else
                                         {
@@ -253,6 +261,7 @@ public class SurgeryCamController : MonoBehaviour
                                             dientesFour.SetActive(true);
                                             this.enabled = true;
                                             currentState = SurgeryState.FixturePlace;
+                                            Debug.Log("성공!");
                                         }
                                         else
                                         {
@@ -272,6 +281,7 @@ public class SurgeryCamController : MonoBehaviour
                                         Destroy(heldTool);
                                         this.enabled = true;
                                         currentState = SurgeryState.HealingAbutmentPlace;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -286,6 +296,7 @@ public class SurgeryCamController : MonoBehaviour
                                         Destroy(heldTool);
                                         this.enabled = true;
                                         currentState = SurgeryState.SutureOne;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -305,6 +316,7 @@ public class SurgeryCamController : MonoBehaviour
                                         surgicalSutureFive.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.SutureTwo;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -322,6 +334,7 @@ public class SurgeryCamController : MonoBehaviour
                                         surgicalSutureTen.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.SutureThree;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -337,6 +350,7 @@ public class SurgeryCamController : MonoBehaviour
                                         surgicalSutureThirteen.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.HealingAbutmentRemove;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -350,6 +364,7 @@ public class SurgeryCamController : MonoBehaviour
                                         Destroy(healingAbutment);
                                         this.enabled = true;
                                         currentState=SurgeryState.AbutmentPlace;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -364,6 +379,7 @@ public class SurgeryCamController : MonoBehaviour
                                         abutment.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.CrownPlace;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -378,6 +394,7 @@ public class SurgeryCamController : MonoBehaviour
                                         crown.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.Finish;
+                                        Debug.Log("끝까지 성공!");
                                     }
                                     else
                                     {
