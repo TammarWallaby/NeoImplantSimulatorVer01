@@ -208,7 +208,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillSmall:
-                                    if(heldTool.name=="HandPiece"&&heldDrill!=null)
+                                    if(heldTool.name=="ToolHandPiece"&&heldDrill!=null)
                                     {
                                         if (heldDrill.name == "ToolDrill2")
                                         {
@@ -230,7 +230,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillMedium:
-                                    if (heldTool.name == "HandPiece" && heldDrill != null)
+                                    if (heldTool.name == "ToolHandPiece" && heldDrill != null)
                                     {
                                         if (heldDrill.name == "ToolDrill3")
                                         {
@@ -252,7 +252,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillLarge:
-                                    if (heldTool.name == "HandPiece" && heldDrill != null)
+                                    if (heldTool.name == "ToolHandPiece" && heldDrill != null)
                                     {
                                         if (heldDrill.name == "ToolDrill4")
                                         {
