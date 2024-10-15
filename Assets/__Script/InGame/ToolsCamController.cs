@@ -39,9 +39,6 @@ public class ToolsCamController : MonoBehaviour
             Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            Debug.DrawRay(ray.origin, ray.direction * pickUpRange, Color.red, 3.0f); // 2초 동안 빨간색 Ray 표시
-
-
             if (Physics.Raycast(ray, out hit, pickUpRange))
             {
                 if (hit.collider.CompareTag("Tools"))
