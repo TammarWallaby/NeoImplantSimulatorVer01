@@ -60,8 +60,8 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = true;
                         playerController.enabled = false;
                         mainCamController.enabled = false;
-                        heldTool.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                        heldDrill.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        heldTool.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+                        heldDrill.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
                         heldTool.SetActive(false);
                         heldDrill.SetActive(false);
                     })

@@ -33,54 +33,78 @@ public class ToolsCamController : MonoBehaviour
 
     private void Update()
     {
-        if (toolsCam.enabled == true && Input.GetMouseButtonDown(0))
+        if (toolsCam.enabled == true)
         {
-
-            Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, pickUpRange))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.CompareTag("Tools"))
+                Ray ray = toolsCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, pickUpRange))
                 {
-                    PickUpTool(hit.collider.gameObject);
-                }
-                if (hit.collider.CompareTag("Drill"))
-                {
-                    PickUpDrill(hit.collider.gameObject);
-                }
-                if (hit.collider.CompareTag("Tray"))
-                {
-                    DropTool();
+                    if (hit.collider.CompareTag("Tools"))
+                    {
+                        PickUpTool(hit.collider.gameObject);
+                    }
+                    if (hit.collider.CompareTag("Drill"))
+                    {
+                        PickUpDrill(hit.collider.gameObject);
+                    }
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.F))
+            {
+                DropTool();
+            }
         }
+
+        
     }
 
     void PickUpTool(GameObject tool)
     {
-        if (currentTool == null)
+        if (currentTool != null)
         {
-            currentTool = tool; // 현재 도구 설정
-            toolsOriginPosition = tool.transform.position;
-            tool.transform.SetParent(heldToolTransform); // 도구를 카메라의 자식으로 설정
-            tool.transform.localPosition = Vector3.zero; // 카메라 앞에 위치
-            tool.transform.localRotation= Quaternion.identity;
+            currentTool.GetComponent<Collider>().enabled = true;
+            currentTool.transform.SetParent(toolsTransform); // 도구를 부모에서 분리
+            currentTool.transform.position = toolsOriginPosition;
+            currentTool.transform.rotation = Quaternion.identity;
+            currentTool = null; // 현재 도구 초기화
         }
+        if (currentDrill != null)
+        {
+            currentDrill.GetComponent<Collider>().enabled = true;
+            currentDrill.transform.SetParent(toolsTransform);
+            currentDrill.transform.position = drillsOriginPosition;
+            currentDrill.transform.rotation = Quaternion.identity;
+            currentDrill = null; // 현재 드릴 초기화
+        }
+        currentTool = tool; // 현재 도구 설정
+        currentTool.GetComponent<Collider>().enabled = false;
+        toolsOriginPosition = tool.transform.position;
+        tool.transform.SetParent(heldToolTransform); // 도구를 카메라의 자식으로 설정
+        tool.transform.localPosition = Vector3.zero; // 카메라 앞에 위치
+        tool.transform.localRotation = Quaternion.identity;
     }
 
     void PickUpDrill(GameObject drill)
     {
-        if (currentTool != null)
+        if (currentTool.gameObject.name == "ToolHandpiece")
         {
-            if (currentTool.gameObject.name == "ToolHandpiece" && currentDrill == null)
+            if (currentDrill != null)
             {
-                currentDrill = drill;
-                drillsOriginPosition = drill.transform.position;
-                drill.transform.SetParent(heldDrillTransform);
-                drill.transform.localPosition = Vector3.zero;
-                drill.transform.localRotation = Quaternion.identity;
+                currentDrill.GetComponent<Collider>().enabled = true;
+                currentDrill.transform.SetParent(toolsTransform);
+                currentDrill.transform.position = drillsOriginPosition;
+                currentDrill.transform.rotation = Quaternion.identity;
+                currentDrill = null; // 현재 드릴 초기화
             }
+            currentDrill = drill;
+            currentDrill.GetComponent<Collider>().enabled = false;
+            drillsOriginPosition = drill.transform.position;
+            drill.transform.SetParent(heldDrillTransform);
+            drill.transform.localPosition = Vector3.zero;
+            drill.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -88,20 +112,19 @@ public class ToolsCamController : MonoBehaviour
     {
         if (currentTool != null)
         {
-            if (currentTool.name == "ToolHandpiece" && currentDrill != null)
+            if (currentDrill != null)
             {
+                currentDrill.GetComponent<Collider>().enabled = true;
                 currentDrill.transform.SetParent(toolsTransform);
                 currentDrill.transform.position = drillsOriginPosition;
                 currentDrill.transform.rotation = Quaternion.identity;
                 currentDrill = null; // 현재 드릴 초기화
             }
-            else
-            {
-                currentTool.transform.SetParent(toolsTransform); // 도구를 부모에서 분리
-                currentTool.transform.position = toolsOriginPosition;
-                currentTool.transform.rotation = Quaternion.identity;
-                currentTool = null; // 현재 도구 초기화
-            }
+            currentTool.GetComponent<Collider>().enabled = true;
+            currentTool.transform.SetParent(toolsTransform); // 도구를 부모에서 분리
+            currentTool.transform.position = toolsOriginPosition;
+            currentTool.transform.rotation = Quaternion.identity;
+            currentTool = null; // 현재 도구 초기화
         }
     }
 }
