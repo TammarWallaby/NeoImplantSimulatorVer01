@@ -26,7 +26,7 @@ public class SettingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && cameraChange.isSequencePlaying == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && cameraChange.isSequencePlaying == false && surgeryCamController.isSequencePlaying == false)
         {
             settingPanel.ToggleSettingsPanel();
             isSettingPanelOn = !isSettingPanelOn;
@@ -36,22 +36,24 @@ public class SettingManager : MonoBehaviour
                 playerController.enabled = false;
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
+                cameraChange.enabled = false;
                 if (cameraChange.mainCam.enabled)
                 {
                     mainCamController.enabled = false;
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    surgeryCamController.enabled=false;
+                    surgeryCamController.enabled = false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    toolsCamController.enabled=false;
+                    toolsCamController.enabled = false;
                 }
             }
             else
             {
                 Time.timeScale = 1;
+                cameraChange.enabled = true;
                 if (cameraChange.mainCam.enabled)
                 {
                     mainCamController.enabled = true;
@@ -60,12 +62,12 @@ public class SettingManager : MonoBehaviour
                 }
                 else if (cameraChange.surgeryCam.enabled)
                 {
-                    surgeryCamController.enabled=true;
+                    surgeryCamController.enabled = true;
                     Cursor.visible = false;
                 }
                 else if (cameraChange.toolsCam.enabled)
                 {
-                    toolsCamController.enabled=true;
+                    toolsCamController.enabled = true;
                 }
             }
         }

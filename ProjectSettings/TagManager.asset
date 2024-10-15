@@ -9,6 +9,7 @@ TagManager:
   - Tray
   - Drill
   - ToolsSetting
+  - SurgicalSite
   layers:
   - Default
   - TransparentFX
