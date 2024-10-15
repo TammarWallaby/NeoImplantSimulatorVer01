@@ -107,10 +107,7 @@ public class SurgeryCamController : MonoBehaviour
                     if (hit.collider.CompareTag("SurgicalSite"))
                     {
                         HasHeldTool();
-                        if (heldTool.name == "ToolHandpiece")
-                        {
-                            HasHeldDrill();
-                        }
+                        HasHeldDrill();
 
                         if (heldTool!= null)
                         {
@@ -208,29 +205,22 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillSmall:
-                                    if(heldTool.name=="ToolHandPiece"&&heldDrill!=null)
+                                    if (heldDrill.name == "ToolDrill2")
                                     {
-                                        if (heldDrill.name == "ToolDrill2")
-                                        {
-                                            this.enabled = false;
-                                            dientesOne.SetActive(false);
-                                            dientesTwo.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.DrillMedium;
-                                            Debug.Log("성공!");
-                                        }
-                                        else
-                                        {
-                                            Debug.Log("드릴 틀림 ㅋ");
-                                        }
+                                        this.enabled = false;
+                                        dientesOne.SetActive(false);
+                                        dientesTwo.SetActive(true);
+                                        this.enabled = true;
+                                        currentState = SurgeryState.DrillMedium;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
+                                        Debug.Log("드릴 틀림 ㅋ");
                                     }
                                     break;
                                 case SurgeryState.DrillMedium:
-                                    if (heldTool.name == "ToolHandPiece" && heldDrill != null)
+                                    if (heldTool.name == "ToolHandpiece" && heldDrill != null)
                                     {
                                         if (heldDrill.name == "ToolDrill3")
                                         {
@@ -252,7 +242,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillLarge:
-                                    if (heldTool.name == "ToolHandPiece" && heldDrill != null)
+                                    if (heldTool.name == "ToolHandpiece" && heldDrill != null)
                                     {
                                         if (heldDrill.name == "ToolDrill4")
                                         {
