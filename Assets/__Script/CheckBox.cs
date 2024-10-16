@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CheckBox : MonoBehaviour
 {
     public Toggle movecheckBox; // 플레이어의 위치가 목표에 도달했을 때 체크되는 체크박스
@@ -16,6 +17,7 @@ public class CheckBox : MonoBehaviour
 
     private Camera currentCamera; // 현재 활성화된 카메라
     private bool isToolPicked = false; // 도구가 클릭되었는지 여부를 추적하는 변수
+
     private void Start()
     {
         // 시작 시 활성화된 카메라 저장
