@@ -35,7 +35,6 @@ public class SurgeryCamController : MonoBehaviour
         FixturePlace,
         WrenchWithFixture,
         HealingAbutmentPlace,
-        WrenchWithHealingAbutment,
         SutureOne,
         SutureTwo,
         SutureThree,
@@ -107,10 +106,13 @@ public class SurgeryCamController : MonoBehaviour
                     if (hit.collider.CompareTag("SurgicalSite"))
                     {
                         HasHeldTool();
-                        HasHeldDrill();
 
                         if (heldTool!= null)
                         {
+                            if(heldTool.name=="ToolHandpiece")
+                            {
+                                HasHeldDrill();
+                            }
                             switch (currentState) 
                             {
                                 case SurgeryState.Anesthesia:
@@ -205,18 +207,21 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.DrillSmall:
-                                    if (heldDrill.name == "ToolDrill2")
+                                    if (heldTool.name == "ToolHandpiece" && heldDrill != null)
                                     {
-                                        this.enabled = false;
-                                        dientesOne.SetActive(false);
-                                        dientesTwo.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.DrillMedium;
-                                        Debug.Log("성공!");
-                                    }
-                                    else
-                                    {
-                                        Debug.Log("드릴 틀림 ㅋ");
+                                        if (heldDrill.name == "ToolDrill2")
+                                        {
+                                            this.enabled = false;
+                                            dientesOne.SetActive(false);
+                                            dientesTwo.SetActive(true);
+                                            this.enabled = true;
+                                            currentState = SurgeryState.DrillMedium;
+                                            Debug.Log("성공!");
+                                        }
+                                        else
+                                        {
+                                            Debug.Log("드릴 틀림 ㅋ");
+                                        }
                                     }
                                     break;
                                 case SurgeryState.DrillMedium:
@@ -264,11 +269,31 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.FixturePlace:
-                                    if (heldTool.name=="ToolFixture")
+                                    if (heldTool.name == "ToolHandpiece" && heldDrill != null)
+                                    {
+                                        if (heldDrill.name == "ToolFixture")
+                                        {
+                                            this.enabled = false;
+                                            fixture.SetActive(true);
+                                            Destroy(heldDrill);
+                                            this.enabled = true;
+                                            currentState = SurgeryState.WrenchWithFixture;
+                                            Debug.Log("성공!");
+                                        }
+                                        else
+                                        {
+                                            Debug.Log("드릴 틀림 ㅋ");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Debug.Log("순서 틀림 ㅋ");
+                                    }
+                                    break;
+                                case SurgeryState.WrenchWithFixture:
+                                    if(heldTool.name=="ToolTorqueRatchet")
                                     {
                                         this.enabled = false;
-                                        fixture.SetActive(true);
-                                        Destroy(heldTool);
                                         this.enabled = true;
                                         currentState = SurgeryState.HealingAbutmentPlace;
                                         Debug.Log("성공!");
@@ -279,7 +304,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.HealingAbutmentPlace:
-                                    if (heldTool.name == "ToolHealingAbutment")
+                                    if (heldTool.name == "ToolHealingAbutment") // 드라이버 + 힐어버
                                     {
                                         this.enabled = false;
                                         healingAbutment.SetActive(true);
@@ -348,7 +373,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.HealingAbutmentRemove:
-                                    if(heldTool.name=="ToolTorqueRatchet")
+                                    if(heldTool.name=="ToolTorqueRatchet") // 드라이버 교체예정
                                     {
                                         this.enabled = false;
                                         Destroy(healingAbutment);
@@ -362,7 +387,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.AbutmentPlace:
-                                    if (heldTool.name == "ToolAbutment")
+                                    if (heldTool.name == "ToolAbutment") // 드라이버 + 어버 교체예정
                                     {
                                         this.enabled = false;
                                         Destroy(heldTool);
