@@ -2265,6 +2265,59 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3256492302183875302, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
   m_PrefabInstance: {fileID: 1503049874}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1511938448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511938449}
+  - component: {fileID: 1511938450}
+  m_Layer: 0
+  m_Name: SurgicalSite
+  m_TagString: SurgicalSite
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1511938449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511938448}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.34509254, w: 0.9385687}
+  m_LocalPosition: {x: -0.96004, y: 1.0322, z: -0.07379}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7827222934232465279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.375}
+--- !u!65 &1511938450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511938448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008, y: 0.008, z: 0.008}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1748828417
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,6 +10172,7 @@ Transform:
   - {fileID: 755690754671978475}
   - {fileID: 863307148607138655}
   - {fileID: 586176534}
+  - {fileID: 1511938449}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7827222934232465280
