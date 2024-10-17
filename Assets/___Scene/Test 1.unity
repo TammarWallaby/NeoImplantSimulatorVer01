@@ -282,6 +282,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -500,6 +501,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 65045a9 (Merge branch 'jjo' into jjoee)
+=======
+>>>>>>> parent of 2711048 (11)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
