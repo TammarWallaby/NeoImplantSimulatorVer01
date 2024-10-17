@@ -326,6 +326,8 @@ MonoBehaviour:
   cameracheckBox: {fileID: 1715549367}
   pickAnesthesiaCheckBox: {fileID: 1149497811}
   dropAnesthesiaCheckBox: {fileID: 2116474676}
+  mousecheckBox: {fileID: 978429159}
+  anesthesiaCheckBox: {fileID: 1966610604}
   player: {fileID: 283261642}
   targetPosition: {x: -0.9, y: 1, z: -1.8}
 --- !u!1 &123885120
@@ -1458,7 +1460,7 @@ GameObject:
   - component: {fileID: 606919372}
   m_Layer: 0
   m_Name: SurgeryCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4502,7 +4504,7 @@ GameObject:
   - component: {fileID: 1715549366}
   - component: {fileID: 1715549367}
   m_Layer: 5
-  m_Name: CameraToggle
+  m_Name: ToolsCameraToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
