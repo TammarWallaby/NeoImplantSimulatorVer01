@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68e3d732b5d67f8419ae82400d235ec0
+guid: e65acc878d398c04b966ba60a709f6e9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: ColorYellow
     second: {fileID: 2100000, guid: 4c3e1526390bfb242ba78454ff4b8016, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 24bfafbeb322b7945bfacb23ac6025ef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
