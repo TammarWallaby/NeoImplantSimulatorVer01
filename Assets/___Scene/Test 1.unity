@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 606919372}
   m_Layer: 0
   m_Name: SurgeryCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 632037234}
   m_Layer: 0
   m_Name: ToolsCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3928,7 +3928,7 @@ PrefabInstance:
     - target: {fileID: 6266211718714389674, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
       propertyPath: settingsPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503049876}
     - target: {fileID: 7094354933836480905, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3989,6 +3989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1906a88286bc7b4418f1ec091e3d0845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1503049876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3256492302183875302, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
+  m_PrefabInstance: {fileID: 1503049874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1512576522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,7 +4752,9 @@ MonoBehaviour:
   cameracheckBox: {fileID: 2115656185}
   pickAnesthesiaCheckBox: {fileID: 1408660376}
   dropAnesthesiaCheckBox: {fileID: 929867556}
-  player: {fileID: 0}
+  mousecheckBox: {fileID: 698831151}
+  anesthesiaCheckBox: {fileID: 997961081}
+  player: {fileID: 283261642}
   targetPosition: {x: -0.9, y: 1, z: -1.8}
 --- !u!114 &1980672998
 MonoBehaviour:
@@ -4957,7 +4964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73abf53d0f9d39844abaf51d91985d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingPanel: {fileID: 0}
+  settingPanel: {fileID: 1503049875}
   cameraChange: {fileID: 283261645}
   playerController: {fileID: 283261644}
   mainCamController: {fileID: 1276081818}
@@ -5161,7 +5168,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!224 &2115656186
 RectTransform:
   m_ObjectHideFlags: 0

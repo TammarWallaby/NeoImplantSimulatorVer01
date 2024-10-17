@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1906a88286bc7b4418f1ec091e3d0845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 3174347992117011008}
+  settingsPanel: {fileID: 3256492302183875302}
   backgroundVolumeSlider: {fileID: 3951347561708263695}
   effectVolumeSlider: {fileID: 4196166841527715444}
   mouseSensitivitySlider: {fileID: 6311442992384477313}
