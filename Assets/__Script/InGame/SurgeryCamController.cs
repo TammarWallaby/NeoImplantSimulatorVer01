@@ -212,6 +212,10 @@ public class SurgeryCamController : MonoBehaviour
                                             Debug.Log("드릴 틀림 ㅋ");
                                         }
                                     }
+                                    else
+                                    {
+                                        Debug.Log("순서 틀림 ㅋ");
+                                    }
                                     break;
                                 case SurgeryState.DrillMedium:
                                     if (heldTool.name == "ToolHandpiece" && heldDrill != null)
@@ -367,7 +371,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.CrownPlace:
-                                    if(heldTool.name=="ToolIncisorCrown")
+                                    if(heldTool.name=="ToolIncisorCrown") // 이름때문에 어금니 X
                                     {
                                         this.enabled = false;
                                         Destroy(heldTool);
