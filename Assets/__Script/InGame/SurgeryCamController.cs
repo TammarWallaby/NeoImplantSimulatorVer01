@@ -59,25 +59,14 @@ public class SurgeryCamController : MonoBehaviour
 
     public GameObject surgicalSutureOne;
     public GameObject surgicalSutureTwo;
-    public GameObject surgicalSutureThree;
-    public GameObject surgicalSutureFour;
-    public GameObject surgicalSutureFive;
-    public GameObject surgicalSutureSix;
-    public GameObject surgicalSutureSeven;
-    public GameObject surgicalSutureEight;
-    public GameObject surgicalSutureNine;
-    public GameObject surgicalSutureTen;
-    public GameObject surgicalSutureEleven;
-    public GameObject surgicalSutureTwelve;
-    public GameObject surgicalSutureThirteen;
 
     public GameObject fixture;
     public GameObject healingAbutment;
     public GameObject abutment;
     public GameObject crown;
 
-    public GameObject heldTool;
-    public GameObject heldDrill;
+    GameObject heldTool;
+    GameObject heldDrill;
 
     private void Start()
     {
@@ -223,6 +212,10 @@ public class SurgeryCamController : MonoBehaviour
                                             Debug.Log("드릴 틀림 ㅋ");
                                         }
                                     }
+                                    else
+                                    {
+                                        Debug.Log("순서 틀림 ㅋ");
+                                    }
                                     break;
                                 case SurgeryState.DrillMedium:
                                     if (heldTool.name == "ToolHandpiece" && heldDrill != null)
@@ -325,10 +318,6 @@ public class SurgeryCamController : MonoBehaviour
                                         dientesGumsFive.SetActive(false);
                                         dientesGumsThree.SetActive(true);
                                         surgicalSutureOne.SetActive(true);
-                                        surgicalSutureTwo.SetActive(true);
-                                        surgicalSutureThree.SetActive(true);
-                                        surgicalSutureFour.SetActive(true);
-                                        surgicalSutureFive.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.SutureTwo;
                                         Debug.Log("성공!");
@@ -342,27 +331,7 @@ public class SurgeryCamController : MonoBehaviour
                                     if (heldTool.name == "ToolNeedle")
                                     {
                                         this.enabled = false;
-                                        surgicalSutureSix.SetActive(true);
-                                        surgicalSutureSeven.SetActive(true);
-                                        surgicalSutureEight.SetActive(true);
-                                        surgicalSutureNine.SetActive(true);
-                                        surgicalSutureTen.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.SutureThree;
-                                        Debug.Log("성공!");
-                                    }
-                                    else
-                                    {
-                                        Debug.Log("순서 틀림 ㅋ");
-                                    }
-                                    break;
-                                case SurgeryState.SutureThree:
-                                    if (heldTool.name == "ToolNeedle")
-                                    {
-                                        this.enabled = false;
-                                        surgicalSutureEleven.SetActive(true);
-                                        surgicalSutureTwelve.SetActive(true);
-                                        surgicalSutureThirteen.SetActive(true);
+                                        surgicalSutureTwo.SetActive(true);
                                         this.enabled = true;
                                         currentState = SurgeryState.HealingAbutmentRemove;
                                         Debug.Log("성공!");
@@ -402,7 +371,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.CrownPlace:
-                                    if(heldTool.name=="ToolIncisorCrown")
+                                    if(heldTool.name=="ToolIncisorCrown") // 이름때문에 어금니 X
                                     {
                                         this.enabled = false;
                                         Destroy(heldTool);
