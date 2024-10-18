@@ -1163,10 +1163,12 @@ MonoBehaviour:
   toolsCam: {fileID: 632037232}
   heldToolTransform: {fileID: 745655880}
   heldDrillTransform: {fileID: 1929270066}
+  heldAbutmentTransform: {fileID: 0}
   toolsTransform: {fileID: 375948976}
   pickUpRange: 3
   currentTool: {fileID: 0}
   currentDrill: {fileID: 0}
+  currentAbutment: {fileID: 0}
 --- !u!1 &632991178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1426,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757411882}
   m_CullTransparentMesh: 1
+--- !u!1 &905774363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905774364}
+  m_Layer: 0
+  m_Name: HeldAbutment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905774364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905774363}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: -0.02, z: 0.20000002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1276081816}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910838140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1814,7 @@ Transform:
   m_Children:
   - {fileID: 745655880}
   - {fileID: 1929270066}
+  - {fileID: 905774364}
   m_Father: {fileID: 283261642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276081817
@@ -11019,7 +11053,7 @@ GameObject:
   - component: {fileID: 8339131175905865072}
   m_Layer: 0
   m_Name: ToolHealingAbutment
-  m_TagString: Tools
+  m_TagString: Abutment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11101,7 +11135,7 @@ GameObject:
   - component: {fileID: 8257243442989241073}
   m_Layer: 0
   m_Name: ToolAbutment
-  m_TagString: Tools
+  m_TagString: Abutment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

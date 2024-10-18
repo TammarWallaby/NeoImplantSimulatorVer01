@@ -10,6 +10,7 @@ TagManager:
   - Drill
   - ToolsSetting
   - SurgicalSite
+  - Abutment
   layers:
   - Default
   - TransparentFX
