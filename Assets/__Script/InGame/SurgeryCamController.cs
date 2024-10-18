@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
 
 public class SurgeryCamController : MonoBehaviour
 {
@@ -65,6 +66,8 @@ public class SurgeryCamController : MonoBehaviour
     public GameObject abutment;
     public GameObject crown;
 
+    public GameObject syringePusher;
+
     GameObject heldTool;
     GameObject heldDrill;
     GameObject heldAbutment;
@@ -114,10 +117,25 @@ public class SurgeryCamController : MonoBehaviour
                                     if (heldTool.name == "ToolSyringe")
                                     {
                                         this.enabled = false;
-                                        // 마취 시퀀스
-                                        this.enabled = true;
-                                        currentState = SurgeryState.IncisionOne;
-                                        Debug.Log("성공!");
+                                        Sequence anethesiaSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(syringePusher.transform.DOLocalMoveZ(0.08f, 3f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled=true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.IncisionOne;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {

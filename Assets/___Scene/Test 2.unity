@@ -982,6 +982,7 @@ MonoBehaviour:
   healingAbutment: {fileID: 8571027546188304045}
   abutment: {fileID: 1710258631792475667}
   crown: {fileID: 6001321133583303640}
+  syringePusher: {fileID: 0}
 --- !u!1 &632037229
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,7 +5092,7 @@ GameObject:
   - component: {fileID: 5080576850722463861}
   - component: {fileID: 2120495043672090130}
   m_Layer: 0
-  m_Name: ToolSyringeA
+  m_Name: ToolSyringePusher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
