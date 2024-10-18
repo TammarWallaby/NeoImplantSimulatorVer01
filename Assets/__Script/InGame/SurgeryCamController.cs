@@ -108,9 +108,6 @@ public class SurgeryCamController : MonoBehaviour
                             {
                                 HasHeldAbutment();
                             }
-
-
-
                             switch (currentState) 
                             {
                                 case SurgeryState.Anesthesia:
