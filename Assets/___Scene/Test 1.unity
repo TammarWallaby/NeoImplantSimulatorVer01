@@ -2364,7 +2364,7 @@ PrefabInstance:
     - target: {fileID: 6266211718714389674, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
       propertyPath: settingsPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503049875}
     - target: {fileID: 7094354933836480905, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2414,6 +2414,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
+--- !u!1 &1503049875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 143101738564245780, guid: 50a40081d0db2c447ab2e941195ff778, type: 3}
+  m_PrefabInstance: {fileID: 1503049874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1571690782
 GameObject:
   m_ObjectHideFlags: 0
