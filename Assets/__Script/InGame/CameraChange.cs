@@ -32,6 +32,7 @@ public class CameraChange : MonoBehaviour
 
     public GameObject heldTool;
     public GameObject heldDrill;
+    public GameObject heldAbutment;
 
     private void Awake()
     {
@@ -62,8 +63,10 @@ public class CameraChange : MonoBehaviour
                         mainCamController.enabled = false;
                         heldTool.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
                         heldDrill.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+                        heldAbutment.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
                         heldTool.SetActive(false);
                         heldDrill.SetActive(false);
+                        heldAbutment.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(surgeryCam.transform.position, 2f))
                     .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
@@ -76,6 +79,7 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = false;
                         heldTool.SetActive(true);
                         heldDrill.SetActive(true);
+                        heldAbutment.SetActive(true);
                     });
                 }
                 else if (surgeryCam.enabled)
@@ -89,6 +93,7 @@ public class CameraChange : MonoBehaviour
                         Cursor.lockState = CursorLockMode.Locked;
                         heldTool.SetActive(false);
                         heldDrill.SetActive(false);
+                        heldAbutment.SetActive(false);
                     })
                     .Append(mainCam.transform.DOMove(mainCamPosition, 2f))
                     .Join(mainCam.transform.DORotate(mainCamRotation, 2f))
@@ -99,10 +104,13 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = false;
                         heldTool.SetActive(true);
                         heldDrill.SetActive(true);
+                        heldAbutment.SetActive(true);
                         heldTool.transform.localScale = new Vector3(1f, 1f, 1f);
                         heldDrill.transform.localScale = new Vector3(1f, 1f, 1f);
+                        heldAbutment.transform.localScale = new Vector3(1f, 1f, 1f);
                         heldTool.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);
                         heldDrill.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);
+                        heldAbutment.transform.localPosition = new Vector3(0.1f, -0.02f, 0.2f);
                     });
                 }
             }

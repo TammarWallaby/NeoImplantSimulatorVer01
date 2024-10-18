@@ -86,6 +86,14 @@ public class ToolsCamController : MonoBehaviour
             currentDrill.transform.rotation = Quaternion.identity;
             currentDrill = null; // 현재 드릴 초기화
         }
+        if (currentAbutment != null)
+        {
+            currentAbutment.GetComponent<Collider>().enabled = true;
+            currentAbutment.transform.SetParent(toolsTransform);
+            currentAbutment.transform.position = abutmentOriginPosition;
+            currentAbutment.transform.rotation=Quaternion.identity;
+            currentAbutment = null;
+        }
         currentTool = tool; // 현재 도구 설정
         currentTool.GetComponent<Collider>().enabled = false;
         toolsOriginPosition = tool.transform.position;
@@ -153,6 +161,14 @@ public class ToolsCamController : MonoBehaviour
                 currentDrill.transform.position = drillsOriginPosition;
                 currentDrill.transform.rotation = Quaternion.identity;
                 currentDrill = null; // 현재 드릴 초기화
+            }
+            if (currentAbutment != null)
+            {
+                currentAbutment.GetComponent<Collider>().enabled = true;
+                currentAbutment.transform.SetParent(toolsTransform);
+                currentAbutment.transform.position = abutmentOriginPosition;
+                currentAbutment.transform.rotation = Quaternion.identity;
+                currentAbutment = null;
             }
             currentTool.GetComponent<Collider>().enabled = true;
             currentTool.transform.SetParent(toolsTransform); // 도구를 부모에서 분리
