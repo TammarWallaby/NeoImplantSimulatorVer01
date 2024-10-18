@@ -14,17 +14,20 @@ public class ToolsCamController : MonoBehaviour
     public Camera toolsCam;
     public Transform heldToolTransform;
     public Transform heldDrillTransform;
+    public Transform heldAbutmentTransform;
+
     public Transform toolsTransform;
     
-
     public float pickUpRange;
 
     public GameObject currentTool;
     public GameObject currentDrill;
+    public GameObject currentAbutment;
 
 
     Vector3 toolsOriginPosition;
     Vector3 drillsOriginPosition;
+    Vector3 abutmentOriginPosition;
 
     private void Awake()
     {
@@ -49,6 +52,10 @@ public class ToolsCamController : MonoBehaviour
                     if (hit.collider.CompareTag("Drill"))
                     {
                         PickUpDrill(hit.collider.gameObject);
+                    }
+                    if (hit.collider.CompareTag("Abutment"))
+                    {
+                        PickUpAbutment(hit.collider.gameObject);
                     }
                 }
             }
@@ -107,6 +114,30 @@ public class ToolsCamController : MonoBehaviour
                 drill.transform.SetParent(heldDrillTransform);
                 drill.transform.localPosition = Vector3.zero;
                 drill.transform.localRotation = Quaternion.identity;
+            }
+        }
+    }
+
+    void PickUpAbutment(GameObject abutment)
+    {
+        if (currentTool!=null)
+        {
+            if(currentTool.gameObject.name=="ToolDriver")
+            {
+                if (currentAbutment != null)
+                {
+                    currentAbutment.GetComponent<Collider>().enabled = true;
+                    currentAbutment.transform.SetParent(toolsTransform);
+                    currentAbutment.transform.position = abutmentOriginPosition;
+                    currentAbutment.transform.rotation = Quaternion.identity;
+                    currentAbutment = null;
+                }
+                currentAbutment = abutment;
+                currentAbutment.GetComponent<Collider>().enabled = false;
+                abutmentOriginPosition = abutment.transform.position;
+                abutment.transform.SetParent(heldAbutmentTransform);
+                abutment.transform.localPosition= Vector3.zero;
+                abutment.transform.localRotation= Quaternion.identity;
             }
         }
     }
