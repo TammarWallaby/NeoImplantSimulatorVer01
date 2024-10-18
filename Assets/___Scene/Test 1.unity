@@ -416,6 +416,7 @@ MonoBehaviour:
   mainCamRotation: {x: 0, y: 0, z: 0}
   heldTool: {fileID: 745655879}
   heldDrill: {fileID: 1929270065}
+  heldAbutment: {fileID: 1933163293}
 --- !u!1 &375948975
 GameObject:
   m_ObjectHideFlags: 0

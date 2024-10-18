@@ -67,6 +67,7 @@ public class SurgeryCamController : MonoBehaviour
 
     GameObject heldTool;
     GameObject heldDrill;
+    GameObject heldAbutment;
 
     private void Start()
     {
@@ -84,6 +85,7 @@ public class SurgeryCamController : MonoBehaviour
 
             cameraChange.heldTool.transform.position = mouseWorldPosition;
             cameraChange.heldDrill.transform.position= mouseWorldPosition;
+            cameraChange.heldAbutment.transform.position = mouseWorldPosition;
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -101,6 +103,10 @@ public class SurgeryCamController : MonoBehaviour
                             if(heldTool.name=="ToolHandpiece")
                             {
                                 HasHeldDrill();
+                            }
+                            else if (heldTool.name == "ToolDriver")
+                            {
+                                HasHeldAbutment();
                             }
                             switch (currentState) 
                             {
@@ -297,14 +303,21 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.HealingAbutmentPlace:
-                                    if (heldTool.name == "ToolHealingAbutment") // 드라이버 + 힐어버
+                                    if (heldTool.name == "ToolDriver" && heldAbutment != null)
                                     {
-                                        this.enabled = false;
-                                        healingAbutment.SetActive(true);
-                                        Destroy(heldTool);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.SutureOne;
-                                        Debug.Log("성공!");
+                                        if (heldAbutment.name == "ToolHealingAbutment")
+                                        {
+                                            this.enabled = false;
+                                            Destroy(heldAbutment);
+                                            healingAbutment.SetActive(true);
+                                            this.enabled = true;
+                                            currentState = SurgeryState.SutureOne;
+                                            Debug.Log("성공!");
+                                        }
+                                        else
+                                        {
+                                            Debug.Log("어버 틀림 ㅋ");
+                                        }
                                     }
                                     else
                                     {
@@ -410,6 +423,18 @@ public class SurgeryCamController : MonoBehaviour
         if(cameraChange.heldDrill.transform.childCount>0)
         {
             heldDrill = cameraChange.heldDrill.transform.GetChild(0).gameObject;
+        }
+        else
+        {
+            heldDrill = null;
+        }
+    }
+
+    void HasHeldAbutment()
+    {
+        if (cameraChange.heldAbutment.transform.childCount > 0)
+        {
+            heldAbutment = cameraChange.heldAbutment.transform.GetChild(0).gameObject;
         }
         else
         {
