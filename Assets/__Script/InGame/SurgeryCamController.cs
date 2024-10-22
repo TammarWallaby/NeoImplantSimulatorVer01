@@ -117,7 +117,6 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.Anesthesia:
                                     if (heldTool.name == "ToolSyringe")
                                     {
-                                        this.enabled = false;
                                         Sequence anethesiaSequence = DOTween.Sequence()
                                             .AppendCallback(() =>
                                             {
@@ -141,19 +140,40 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         // 실패 UI
-                                        // Time.timeScale = 0f; << 이거 UI창 켜지면 timeScale 자동으로 0 되나? 생각해보니까 failUI 떠있을때 esc 안먹게해야하나?
                                         Debug.Log("순서 틀림 ㅋ");
                                     }
                                     break;
                                 case SurgeryState.IncisionOne:
                                     if (heldTool.name == "ToolScalpel")
                                     {
-                                        this.enabled = false;
-                                        dientesGums.SetActive(false);
-                                        dientesGumsOne.SetActive(true); // 나중에 시퀀스 대체
-                                        this.enabled = true;
-                                        currentState = SurgeryState.IncisionTwo;
-                                        Debug.Log("성공!");
+                                        Sequence incisionOneSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                                Cursor.visible = false;
+
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.013f, 0.032f, 0.006f), 1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(110, 50, 0), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(-0.013f, -0.032f, -0.006f), 2f))
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero,1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity,1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                dientesGums.SetActive(false);
+                                                dientesGumsOne.SetActive(true);
+
+                                                currentState = SurgeryState.IncisionTwo;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
