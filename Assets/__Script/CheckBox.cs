@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class CheckBox : MonoBehaviour
 {
     public Toggle movecheckBox; // 플레이어의 위치가 목표에 도달했을 때 체크되는 체크박스
-    public Toggle cameracheckBox; // 카메라가 변경될 때 체크되는 체크박스
+    public Toggle toolCamera; // 카메라가 변경될 때 체크되는 체크박스
     public Toggle pickAnesthesiaCheckBox; // 도구를 클릭했을 때 체크되는 체크박스
     public Toggle dropAnesthesiaCheckBox; // 도구를 내려놓았을 때 체크박스
-    public Toggle mousecheckBox; // 카메라가 변경 될 때 체크되는 체크박스
-    public Toggle anesthesiaCheckBox; // 
+    public Toggle mouseCamera; // 카메라가 변경 될 때 체크되는 체크박스
+    public Toggle anesthesiaCheckBox; // 마취하면 체크 됨
     public Transform player; // 플레이어의 Transform 컴포넌트
     public Vector3 targetPosition = new Vector3(-0.9f, 1f, -1.8f); // 목표 위치
 
@@ -21,10 +21,10 @@ public class CheckBox : MonoBehaviour
     private void Start()
     {
         movecheckBox.isOn = false; // 체크 해제
-        cameracheckBox.isOn = false;
+        toolCamera.isOn = false;
         pickAnesthesiaCheckBox.isOn = false;
         dropAnesthesiaCheckBox.isOn = false;
-        mousecheckBox.isOn = false;
+        mouseCamera.isOn = false;
         anesthesiaCheckBox.isOn = false;
 
         toolsCamController = FindObjectOfType<ToolsCamController>();
@@ -55,14 +55,14 @@ public class CheckBox : MonoBehaviour
             anesthesiaCheckBox.isOn = true;
         }
 
-        if (cameraChange.toolCameraChange && !cameracheckBox.isOn)
+        if (cameraChange.toolCameraChange && !toolCamera.isOn)
         {
-            cameracheckBox.isOn = true;
+            toolCamera.isOn = true;
         }
 
-        if (cameraChange.surgeryCameraChange && !mousecheckBox.isOn)
+        if (cameraChange.surgeryCameraChange && !mouseCamera.isOn)
         {
-            mousecheckBox.isOn = true;
+            mouseCamera.isOn = true;
         }
     }
 }
