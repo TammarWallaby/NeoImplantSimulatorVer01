@@ -13,6 +13,8 @@ public class CameraChange : MonoBehaviour
     public bool toolsColliderIn;
     public bool surgeryColliderIn;
     public bool isSequencePlaying;
+    public bool surgeryCameraChange = false;
+    public bool toolCameraChange = false;
 
     public Camera mainCam;
     public Camera surgeryCam;
@@ -72,6 +74,7 @@ public class CameraChange : MonoBehaviour
                     .Join(mainCam.transform.DORotate(surgeryCam.transform.eulerAngles, 2f))
                     .AppendCallback(() =>
                     {
+                        surgeryCameraChange = true;
                         mainCam.enabled = false;
                         surgeryCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Confined;
@@ -131,6 +134,7 @@ public class CameraChange : MonoBehaviour
                     .Join(mainCam.transform.DORotate(toolsCam.transform.eulerAngles, 2f))
                     .AppendCallback(() =>
                     {
+                        toolCameraChange = true;
                         mainCam.enabled = false;
                         toolsCam.enabled = true;
                         Cursor.lockState = CursorLockMode.Confined;

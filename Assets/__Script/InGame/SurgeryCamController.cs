@@ -23,6 +23,8 @@ public class SurgeryCamController : MonoBehaviour
 
     public float rayRange;
 
+    public bool playTool = false;
+
     public enum SurgeryState
     {
         Anesthesia,
@@ -425,9 +427,10 @@ public class SurgeryCamController : MonoBehaviour
         }
     }
 
-    void HasHeldTool()
+    public void HasHeldTool()
     {
-        if(cameraChange.heldTool.transform.childCount>0)
+        playTool = true;
+        if (cameraChange.heldTool.transform.childCount>0)
         {
             heldTool = cameraChange.heldTool.transform.GetChild(0).gameObject;
         }
