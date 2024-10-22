@@ -70,7 +70,7 @@ public class ToolsCamController : MonoBehaviour
         
     }
 
-    void PickUpTool(GameObject tool)
+    public void PickUpTool(GameObject tool)
     {
         if (currentTool != null)
         {
@@ -102,6 +102,7 @@ public class ToolsCamController : MonoBehaviour
         tool.transform.SetParent(heldToolTransform); // 도구를 카메라의 자식으로 설정
         tool.transform.localPosition = Vector3.zero; // 카메라 앞에 위치
         tool.transform.localRotation = Quaternion.identity;
+        toolPicked = true;
     }
 
     void PickUpDrill(GameObject drill)

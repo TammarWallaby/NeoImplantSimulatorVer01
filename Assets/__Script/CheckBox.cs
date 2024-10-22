@@ -47,6 +47,11 @@ public class CheckBox : MonoBehaviour
         {
             movecheckBox.isOn = true; // 체크박스를 체크 상태로 변경
         }
+        // 도구가 집었을 때 pickAnesthesiaCheckBox 체크
+        if (toolsCamController.toolPicked && !pickAnesthesiaCheckBox.isOn)
+        {
+            pickAnesthesiaCheckBox.isOn = true;
+        }
 
         // 도구가 내려졌을 때 dropAnesthesiaCheckBox 체크
         if (toolsCamController.toolDropped && !dropAnesthesiaCheckBox.isOn)
