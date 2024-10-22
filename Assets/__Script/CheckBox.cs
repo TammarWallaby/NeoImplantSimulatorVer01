@@ -1,7 +1,4 @@
-﻿/*
- * 
- */
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,16 +15,19 @@ public class CheckBox : MonoBehaviour
     public Vector3 targetPosition = new Vector3(-0.9f, 1f, -1.8f); // 목표 위치
 
     private Camera currentCamera; // 현재 활성화된 카메라
-    private bool isToolPicked = false; // 도구가 클릭되었는지 여부를 추적하는 변수
     private Camera mainCamera; // 메인 카메라
     private Camera toolsCamera; // 도구 카메라
     private Camera surgeryCamera; // 수술 카메라
+
+    private ToolsCamController toolsCamController; // ToolsCamController 참조
 
     private void Start()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         toolsCamera = GameObject.Find("ToolsCamera").GetComponent<Camera>();
         surgeryCamera = GameObject.Find("SurgeryCamera").GetComponent<Camera>();
+
+        toolsCamController = toolsCamera.GetComponent<ToolsCamController>(); // ToolsCamController 컴포넌트 가져오기
 
         // 시작 시 활성화된 카메라 저장
         currentCamera = Camera.main;
@@ -39,6 +39,7 @@ public class CheckBox : MonoBehaviour
         mousecheckBox.isOn = false;
         anesthesiaCheckBox.isOn = false;
     }
+
     private void Update()
     {
         // 플레이어의 위치가 목표 위치와 가까울 때 체크박스 체크
@@ -47,9 +48,11 @@ public class CheckBox : MonoBehaviour
             movecheckBox.isOn = true; // 체크박스를 체크 상태로 변경
         }
 
-
-
-
+        // 도구가 내려졌을 때 dropAnesthesiaCheckBox 체크
+        if (toolsCamController.toolDropped && !dropAnesthesiaCheckBox.isOn)
+        {
+            dropAnesthesiaCheckBox.isOn = true;
+        }
 
         // 카메라 변경 감지
         Camera newCamera = Camera.main; // 현재 메인 카메라 가져오기
@@ -60,19 +63,16 @@ public class CheckBox : MonoBehaviour
             {
                 currentCamera = newCamera; // 새 카메라로 업데이트
                 cameracheckBox.isOn = true; // 체크박스를 체크 상태로 변경
-                Debug.Log("카메라가 변경되었습니다."); // 디버그 메시지 추가
             }
         }
         if (newCamera != null && newCamera == surgeryCamera)
         {
-            // 새로운 카메라가 surgeryCamera 경우
+            // 새로운 카메라가 SurgeryCamera인 경우
             if (currentCamera != surgeryCamera)
             {
                 currentCamera = newCamera; // 새 카메라로 업데이트
                 mousecheckBox.isOn = true; // 체크박스를 체크 상태로 변경
-                Debug.Log("카메라가 변경되었습니다."); // 디버그 메시지 추가
             }
         }
     }
-
 }

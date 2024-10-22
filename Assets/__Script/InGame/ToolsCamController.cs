@@ -29,6 +29,8 @@ public class ToolsCamController : MonoBehaviour
     Vector3 drillsOriginPosition;
     Vector3 abutmentOriginPosition;
 
+    public bool toolDropped = false; // 도구가 내려졌는지 추적하는 변수
+    public bool toolPicked = false; // 도구를 집었는지 추적하는 변수
     private void Awake()
     {
         toolsCam = GetComponent<Camera>();
@@ -150,10 +152,11 @@ public class ToolsCamController : MonoBehaviour
         }
     }
 
-    void DropTool()
+    public void DropTool()
     {
         if (currentTool != null)
         {
+            toolDropped = true; // 도구가 내려졌음을 표시
             if (currentDrill != null)
             {
                 currentDrill.GetComponent<Collider>().enabled = true;
