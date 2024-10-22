@@ -355,7 +355,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.HealingAbutmentRemove:
-                                    if(heldTool.name=="ToolDriver")
+                                    if(heldTool.name=="ToolTorqueRatchet") // 드라이버 교체예정
                                     {
                                         this.enabled = false;
                                         Destroy(healingAbutment);
@@ -369,21 +369,14 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.AbutmentPlace:
-                                    if (heldTool.name == "ToolDriver" && heldAbutment != null)
+                                    if (heldTool.name == "ToolAbutment") // 드라이버 + 어버 교체예정
                                     {
-                                        if (heldAbutment.name == "ToolAbutment")
-                                        {
-                                            this.enabled = false;
-                                            Destroy(heldAbutment);
-                                            abutment.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.CrownPlace;
-                                            Debug.Log("성공!");
-                                        }
-                                        else
-                                        {
-                                            Debug.Log("어버 틀림 ㅋ");
-                                        }
+                                        this.enabled = false;
+                                        Destroy(heldTool);
+                                        abutment.SetActive(true);
+                                        this.enabled = true;
+                                        currentState = SurgeryState.CrownPlace;
+                                        Debug.Log("성공!");
                                     }
                                     else
                                     {
@@ -391,7 +384,7 @@ public class SurgeryCamController : MonoBehaviour
                                     }
                                     break;
                                 case SurgeryState.CrownPlace:
-                                    if(heldTool.name=="ToolIncisorCrown"||heldTool.name=="ToolMolarCrown") 
+                                    if(heldTool.name=="ToolIncisorCrown") // 이름때문에 어금니 X
                                     {
                                         this.enabled = false;
                                         Destroy(heldTool);
