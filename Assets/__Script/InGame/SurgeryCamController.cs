@@ -69,9 +69,9 @@ public class SurgeryCamController : MonoBehaviour
 
     public GameObject syringePusher;
 
-    GameObject heldTool;
-    GameObject heldDrill;
-    GameObject heldAbutment;
+    GameObject heldTool; // Player \ MainCamera \ heldTool이 아닌 이 heldTool의 Child 오브젝트
+    GameObject heldDrill; // 위와 동일
+    GameObject heldAbutment; // 위와 동일
 
     private void Start()
     {
@@ -153,8 +153,6 @@ public class SurgeryCamController : MonoBehaviour
                                                 cameraChange.enabled = false;
                                                 isSequencePlaying = true;
                                                 Cursor.lockState = CursorLockMode.Locked;
-                                                Cursor.visible = false;
-
                                             })
                                             .Append(heldTool.transform.DOLocalMove(new Vector3(0.013f, 0.032f, 0.006f), 1f))
                                             .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(110, 50, 0), 1f))
@@ -183,12 +181,32 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.IncisionTwo:
                                     if(heldTool.name=="ToolScalpel")
                                     {
-                                        this.enabled = false;
-                                        dientesGumsOne.SetActive(false);
-                                        dientesGumsTwo.SetActive(true);
-                                        this.enabled = true;
-                                        currentState=SurgeryState.IncisionThree;
-                                        Debug.Log("성공!");
+                                        Sequence incisionTwoSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(-0.02f, 0.01f, -0.008f), 1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(11, 0, -18), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.02f, -0.01f, 0.008f), 2f))
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                dientesGumsOne.SetActive(false);
+                                                dientesGumsTwo.SetActive(true);
+
+                                                currentState = SurgeryState.IncisionThree;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -198,12 +216,32 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.IncisionThree:
                                     if (heldTool.name == "ToolScalpel")
                                     {
-                                        this.enabled = false;
-                                        dientesGumsTwo.SetActive(false);
-                                        dientesGumsThree.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.ElevationOne;
-                                        Debug.Log("성공!");
+                                        Sequence incisionThreeSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(-0.02f, 0.01f, -0.008f), 1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(11, 0, -18), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.02f, -0.01f, 0.008f), 2f))
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                            .Join(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                dientesGumsTwo.SetActive(false);
+                                                dientesGumsThree.SetActive(true);
+
+                                                currentState = SurgeryState.ElevationOne;
+                                                Debug.Log("성공!");                                                
+                                            });
                                     }
                                     else
                                     {
@@ -213,12 +251,33 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.ElevationOne:
                                     if (heldTool.name == "ToolPeriostealElevator")
                                     {
-                                        this.enabled = false;
-                                        dientesGumsThree.SetActive(false);
-                                        dientesGumsFour.SetActive(true);
-                                        this.enabled = true;
-                                        currentState= SurgeryState.ElevationTwo;
-                                        Debug.Log("성공!");
+                                        Sequence elevationOneSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(105, 0, -45), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.033f, -0.0162f, 0.0133f), 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                dientesGumsThree.SetActive(false);
+                                                dientesGumsFour.SetActive(true);
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.ElevationTwo;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -228,12 +287,33 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.ElevationTwo:
                                     if (heldTool.name == "ToolPeriostealElevator")
                                     {
-                                        this.enabled = false;
-                                        dientesGumsFour.SetActive(false);
-                                        dientesGumsFive.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.DrillSmall;
-                                        Debug.Log("성공!");
+                                        Sequence elevationTwoSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(105, 0, -45), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(-0.033f, 0.0162f, -0.0133f), 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                dientesGumsFour.SetActive(false);
+                                                dientesGumsFive.SetActive(true);
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.DrillSmall;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -245,12 +325,41 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldDrill.name == "ToolDrill2")
                                         {
-                                            this.enabled = false;
-                                            dientesOne.SetActive(false);
-                                            dientesTwo.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.DrillMedium;
-                                            Debug.Log("성공!");
+                                            Sequence drillSmallSequence = DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(115, 80, 30), 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.Euler(-30, 5, 0), 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    // 드릴 소리
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.04f, -0.0074f, -0.0462f), 3f))
+                                                .Join(heldDrill.transform.DOLocalMove(new Vector3(0.0156f, 0.0292f, 0.0521f), 3f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    dientesOne.SetActive(false);
+                                                    dientesTwo.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Join(heldDrill.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.DrillMedium;
+                                                    Debug.Log("성공!");
+                                                });
                                         }
                                         else
                                         {
@@ -267,12 +376,41 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldDrill.name == "ToolDrill3")
                                         {
-                                            this.enabled = false;
-                                            dientesTwo.SetActive(false);
-                                            dientesThree.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.DrillLarge;
-                                            Debug.Log("성공!");
+                                            Sequence drillMediumSequence = DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(115, 80, 30), 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.Euler(-30, 5, 0), 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    // 드릴 소리
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.04f, -0.0074f, -0.0462f), 3f))
+                                                .Join(heldDrill.transform.DOLocalMove(new Vector3(0.0156f, 0.0292f, 0.0521f), 3f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    dientesTwo.SetActive(false);
+                                                    dientesThree.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Join(heldDrill.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.DrillLarge;
+                                                    Debug.Log("성공!");
+                                                });
                                         }
                                         else
                                         {
@@ -289,12 +427,41 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldDrill.name == "ToolDrill4")
                                         {
-                                            this.enabled = false;
-                                            dientesThree.SetActive(false);
-                                            dientesFour.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.FixturePlace;
-                                            Debug.Log("성공!");
+                                            Sequence drillLargeSequence = DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(115, 80, 30), 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.Euler(-30, 5, 0), 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    // 드릴 소리
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.04f, -0.0074f, -0.0462f), 3f))
+                                                .Join(heldDrill.transform.DOLocalMove(new Vector3(0.0156f, 0.0292f, 0.0521f), 3f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    dientesThree.SetActive(false);
+                                                    dientesFour.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Join(heldDrill.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.FixturePlace;
+                                                    Debug.Log("성공!");
+                                                });
                                         }
                                         else
                                         {
@@ -317,6 +484,42 @@ public class SurgeryCamController : MonoBehaviour
                                             this.enabled = true;
                                             currentState = SurgeryState.WrenchWithFixture;
                                             Debug.Log("성공!");
+
+                                            Sequence fixturePlaceSequence = DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(115, 80, 30), 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.Euler(-30, 5, 0), 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    // 드릴 소리
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.04f, -0.0074f, -0.0462f), 3f))
+                                                .Join(heldDrill.transform.DOLocalMove(new Vector3(0.0156f, 0.0292f, 0.0521f), 3f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    Destroy(heldDrill);
+                                                    fixture.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Join(heldDrill.transform.DOLocalMove(Vector3.zero, 2f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.WrenchWithFixture;
+                                                    Debug.Log("성공!");
+                                                });
                                         }
                                         else
                                         {
@@ -331,10 +534,30 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.WrenchWithFixture:
                                     if(heldTool.name=="ToolTorqueRatchet")
                                     {
-                                        this.enabled = false;
-                                        this.enabled = true;
-                                        currentState = SurgeryState.HealingAbutmentPlace;
-                                        Debug.Log("성공!");
+                                        Sequence wrenchWithFixtureSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(98, 34, -107), 2f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(77, 28, -107), 2f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(98, 34, -107), 1f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(77, 28, -107), 2f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(98, 34, -107), 1f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.HealingAbutmentPlace;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -352,6 +575,16 @@ public class SurgeryCamController : MonoBehaviour
                                             this.enabled = true;
                                             currentState = SurgeryState.SutureOne;
                                             Debug.Log("성공!");
+
+                                            Sequence healingAbutmentPlace = DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                });
+                                                //.Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler()))
                                         }
                                         else
                                         {
@@ -452,11 +685,11 @@ public class SurgeryCamController : MonoBehaviour
         }
     }
 
-    void HasHeldTool()
+    void HasHeldTool() // Player \ MainCamera \ HeldTool \ ? << 
     {
-        if(cameraChange.heldTool.transform.childCount>0)
+        if(cameraChange.heldTool.transform.childCount>0) // ? 에 오브젝트가 있는가
         {
-            heldTool = cameraChange.heldTool.transform.GetChild(0).gameObject;
+            heldTool = cameraChange.heldTool.transform.GetChild(0).gameObject; // 있다면 SurgeryCamController.heldTool에 넣기
         }
         else
         {
@@ -464,7 +697,7 @@ public class SurgeryCamController : MonoBehaviour
         }
     }
 
-    void HasHeldDrill()
+    void HasHeldDrill() // Player \ MainCamera \ HeldDrill \ ? << 
     {
         if(cameraChange.heldDrill.transform.childCount>0)
         {
@@ -476,7 +709,7 @@ public class SurgeryCamController : MonoBehaviour
         }
     }
 
-    void HasHeldAbutment()
+    void HasHeldAbutment() // Player \ MainCamera \ HeldAbutment \ ? << 
     {
         if (cameraChange.heldAbutment.transform.childCount > 0)
         {
