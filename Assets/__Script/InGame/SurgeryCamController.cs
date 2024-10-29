@@ -478,13 +478,6 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldDrill.name == "ToolFixture")
                                         {
-                                            this.enabled = false;
-                                            fixture.SetActive(true);
-                                            Destroy(heldDrill);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.WrenchWithFixture;
-                                            Debug.Log("성공!");
-
                                             Sequence fixturePlaceSequence = DOTween.Sequence()
                                                 .AppendCallback(() =>
                                                 {
@@ -507,9 +500,7 @@ public class SurgeryCamController : MonoBehaviour
                                                     fixture.SetActive(true);
                                                 })
                                                 .Append(heldTool.transform.DOLocalMove(Vector3.zero, 2f))
-                                                .Join(heldDrill.transform.DOLocalMove(Vector3.zero, 2f))
                                                 .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
-                                                .Join(heldDrill.transform.DOLocalRotateQuaternion(Quaternion.identity, 2f))
                                                 .AppendCallback(() =>
                                                 {
                                                     this.enabled = true;
@@ -569,22 +560,35 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldAbutment.name == "ToolHealingAbutment")
                                         {
-                                            this.enabled = false;
-                                            Destroy(heldAbutment);
-                                            healingAbutment.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.SutureOne;
-                                            Debug.Log("성공!");
-
-                                            Sequence healingAbutmentPlace = DOTween.Sequence()
+                                            Sequence healingAbutmentPlaceSequence = DOTween.Sequence()
                                                 .AppendCallback(() =>
                                                 {
                                                     this.enabled = false;
                                                     cameraChange.enabled = false;
                                                     isSequencePlaying = true;
                                                     Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(-8.7f, -45, 0), 1f))
+                                                .Join(heldAbutment.transform.DOLocalRotateQuaternion(Quaternion.Euler(40, -27, 0), 1f))
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.0425f, -0.009f, -0.043f), 1f))
+                                                .Join(heldAbutment.transform.DOLocalMove(new Vector3(-0.0204f, -0.0383f, 0.043f), 1f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    Destroy(heldAbutment);
+                                                    healingAbutment.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.SutureOne;
+                                                    Debug.Log("성공!");
                                                 });
-                                                //.Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler()))
                                         }
                                         else
                                         {
@@ -599,13 +603,49 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.SutureOne:
                                     if (heldTool.name == "ToolNeedle")
                                     {
-                                        this.enabled = false;
-                                        dientesGumsFive.SetActive(false);
-                                        dientesGumsThree.SetActive(true);
-                                        surgicalSutureOne.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.SutureTwo;
-                                        Debug.Log("성공!");
+                                        Sequence sutureOneSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+
+                                                dientesGumsFive.SetActive(false);
+                                                dientesGumsThree.SetActive(true);
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .AppendCallback(() =>
+                                            {
+                                                surgicalSutureOne.SetActive(true);
+
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.SutureTwo;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -615,25 +655,88 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.SutureTwo:
                                     if (heldTool.name == "ToolNeedle")
                                     {
-                                        this.enabled = false;
-                                        surgicalSutureTwo.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.HealingAbutmentRemove;
-                                        Debug.Log("성공!");
+                                        Sequence sutureOneSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 30, 0), 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.002f, 0.0049f, 0.001f), 0.5f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.5f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(-0.002f, -0.0049f, -0.001f), 0.5f))
+                                            .AppendCallback(() =>
+                                            {
+                                                surgicalSutureTwo.SetActive(true);
+
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.HealingAbutmentRemove;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
                                     }
                                     break;
+
+                                    /* 봉합 완료 후 힐링 어버트먼트 제거 사이에 넣을 것
+                                     * 2~3개월 뒤 FadeInUI넣기
+                                     * 잇몸 실 녹았다고 치고 dientesGum 기본으로 돌려놓기
+                                     */
+
                                 case SurgeryState.HealingAbutmentRemove:
                                     if(heldTool.name=="ToolDriver")
                                     {
-                                        this.enabled = false;
-                                        Destroy(healingAbutment);
-                                        this.enabled = true;
-                                        currentState=SurgeryState.AbutmentPlace;
-                                        Debug.Log("성공!");
+                                        Sequence healingAbutmentRemoveSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(-8.7f, -45, 0), 1f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0,0,-0.019f),1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.0425f, -0.009f, -0.043f), 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                Destroy(healingAbutment);
+                                            })
+                                            .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.AbutmentPlace;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
@@ -645,12 +748,35 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         if (heldAbutment.name == "ToolAbutment")
                                         {
-                                            this.enabled = false;
-                                            Destroy(heldAbutment);
-                                            abutment.SetActive(true);
-                                            this.enabled = true;
-                                            currentState = SurgeryState.CrownPlace;
-                                            Debug.Log("성공!");
+                                            Sequence abutmentPlaceSequence=DOTween.Sequence()
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = false;
+                                                    cameraChange.enabled = false;
+                                                    isSequencePlaying = true;
+                                                    Cursor.lockState = CursorLockMode.Locked;
+                                                })
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(-8.7f, -45, 0), 1f))
+                                                .Join(heldAbutment.transform.DOLocalRotateQuaternion(Quaternion.Euler(40, -27, 0), 1f))
+                                                .Append(heldTool.transform.DOLocalMove(new Vector3(0.0425f, -0.009f, -0.043f), 1f))
+                                                .Join(heldAbutment.transform.DOLocalMove(new Vector3(-0.0204f, -0.0383f, 0.043f), 1f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    Destroy(heldAbutment);
+                                                    abutment.SetActive(true);
+                                                })
+                                                .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
+                                                .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
+                                                .AppendCallback(() =>
+                                                {
+                                                    this.enabled = true;
+                                                    cameraChange.enabled = true;
+                                                    isSequencePlaying = false;
+                                                    Cursor.lockState = CursorLockMode.Confined;
+
+                                                    currentState = SurgeryState.CrownPlace;
+                                                    Debug.Log("성공!");
+                                                });
                                         }
                                         else
                                         {
@@ -665,12 +791,29 @@ public class SurgeryCamController : MonoBehaviour
                                 case SurgeryState.CrownPlace:
                                     if(heldTool.name=="ToolIncisorCrown"||heldTool.name=="ToolMolarCrown") 
                                     {
-                                        this.enabled = false;
-                                        Destroy(heldTool);
-                                        crown.SetActive(true);
-                                        this.enabled = true;
-                                        currentState = SurgeryState.Finish;
-                                        Debug.Log("끝까지 성공!");
+                                        Sequence crownPlaceSequence = DOTween.Sequence()
+                                            .AppendCallback(() =>
+                                            {
+                                                this.enabled = false;
+                                                cameraChange.enabled = false;
+                                                isSequencePlaying = true;
+                                                Cursor.lockState = CursorLockMode.Locked;
+                                            })
+                                            .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, -24, 64), 1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.00272f, -0.00046f, -0.00333f), 1f))
+                                            .AppendCallback(() =>
+                                            {
+                                                Destroy(heldTool);
+                                                crown.SetActive(true);
+
+                                                this.enabled = true;
+                                                cameraChange.enabled = true;
+                                                isSequencePlaying = false;
+                                                Cursor.lockState = CursorLockMode.Confined;
+
+                                                currentState = SurgeryState.CrownPlace;
+                                                Debug.Log("성공!");
+                                            });
                                     }
                                     else
                                     {
