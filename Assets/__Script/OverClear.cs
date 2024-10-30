@@ -11,6 +11,7 @@ public class OverClear : MonoBehaviour
 {
     public GameObject gameOverPanel; // 실패 시 보여줄 패널
     public GameObject clearPanel;    // 클리어 시 보여줄 패널
+    private SurgeryCamController surgeryCamController; // SurgeryCamController 참조
 
     public bool isGameOver = false;
     public bool isGameCleared = false;
@@ -32,20 +33,22 @@ public class OverClear : MonoBehaviour
         }
 
     }
+    private void Start()
+    {
+        surgeryCamController = FindObjectOfType<SurgeryCamController>();
+    }
     private void Update()
     {
         // 키 입력에 따라 게임 오버 및 클리어 처리
-        if (Input.GetKeyDown(KeyCode.G)) // G 키를 눌렀을 때
+        if (surgeryCamController.gameOver == true)
         {
             GameOver(true); // 게임 오버 처리
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) // C 키를 눌렀을 때
+        if (surgeryCamController.gameClear == true && Input.GetKeyDown(KeyCode.Space))
         {
             GameClear(true); // 게임 클리어 처리
         }
-
-        CheckImplantProcess(); // 임플란트 과정 체크
     }
     public void GameOver(bool hasFailed)
     {
@@ -57,6 +60,7 @@ public class OverClear : MonoBehaviour
             isGameOver = true; // 게임 오버 상태로 설정
 
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
             if (gameOverPanel != null)
             {
@@ -74,6 +78,7 @@ public class OverClear : MonoBehaviour
             isGameCleared = true; // 게임 클리어 상태로 설정
 
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
             if (clearPanel != null)
             {
@@ -87,18 +92,5 @@ public class OverClear : MonoBehaviour
     {
         Time.timeScale = 1; // 시간 재개
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 현재 씬 재시작
-    }
-
-    public void CheckImplantProcess()
-    {
-        // 특정 조건을 체크합니다 (예: processFailed와 processCorrect 변수에 따라)
-        if (processFailed) // 조건이 잘못된 경우
-        {
-            GameOver(true); // 과정 실패 호출
-        }
-        else if (processCorrect) // 과정이 성공한 경우
-        {
-            GameClear(true); // 과정 성공 호출
-        }
     }
 }

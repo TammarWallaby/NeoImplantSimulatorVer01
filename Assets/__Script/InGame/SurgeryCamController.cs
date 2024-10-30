@@ -24,6 +24,8 @@ public class SurgeryCamController : MonoBehaviour
     public float rayRange;
 
     public bool playTool = false;
+    public bool gameOver = false;
+    public bool gameClear = false;
 
     public enum SurgeryState
     {
@@ -144,6 +146,7 @@ public class SurgeryCamController : MonoBehaviour
                                     {
                                         // 실패 UI
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.IncisionOne:
@@ -179,6 +182,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.IncisionTwo:
@@ -214,6 +218,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.IncisionThree:
@@ -249,6 +254,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.ElevationOne:
@@ -285,6 +291,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.ElevationTwo:
@@ -321,6 +328,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.DrillSmall:
@@ -367,11 +375,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("드릴 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.DrillMedium:
@@ -418,11 +428,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("드릴 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.DrillLarge:
@@ -469,11 +481,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("드릴 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.FixturePlace:
@@ -518,11 +532,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("드릴 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.WrenchWithFixture:
@@ -556,6 +572,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.HealingAbutmentPlace:
@@ -596,11 +613,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("어버 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.SutureOne:
@@ -653,6 +672,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.SutureTwo:
@@ -702,6 +722,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
 
@@ -744,6 +765,7 @@ public class SurgeryCamController : MonoBehaviour
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.AbutmentPlace:
@@ -784,11 +806,13 @@ public class SurgeryCamController : MonoBehaviour
                                         else
                                         {
                                             Debug.Log("어버 틀림 ㅋ");
+                                            gameOver = true;
                                         }
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                                 case SurgeryState.CrownPlace:
@@ -816,11 +840,13 @@ public class SurgeryCamController : MonoBehaviour
 
                                                 currentState = SurgeryState.Clear;
                                                 Debug.Log("CLEAR!!!");
+                                                gameClear = true;
                                             });
                                     }
                                     else
                                     {
                                         Debug.Log("순서 틀림 ㅋ");
+                                        gameOver = true;
                                     }
                                     break;
                             }

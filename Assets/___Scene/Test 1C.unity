@@ -2076,6 +2076,8 @@ MonoBehaviour:
   isSequencePlaying: 0
   rayRange: 1
   playTool: 0
+  gameOver: 0
+  gameClear: 0
   currentState: 0
   dientesOne: {fileID: 8129853038856396107}
   dientesTwo: {fileID: 833370076468227274}
@@ -4245,7 +4247,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285149123}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6b335b4e5eda047a4ac796b8fcaee6, type: 3}
   m_Name: 
