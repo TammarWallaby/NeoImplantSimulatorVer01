@@ -43,7 +43,7 @@ public class SurgeryCamController : MonoBehaviour
         HealingAbutmentRemove,
         AbutmentPlace,
         CrownPlace,
-        Finish
+        Clear
     }
     public SurgeryState currentState;
 
@@ -811,7 +811,7 @@ public class SurgeryCamController : MonoBehaviour
                                                 isSequencePlaying = false;
                                                 Cursor.lockState = CursorLockMode.Confined;
 
-                                                currentState = SurgeryState.CrownPlace;
+                                                currentState = SurgeryState.Clear;
                                                 Debug.Log("¼º°ø!");
                                             });
                                     }
