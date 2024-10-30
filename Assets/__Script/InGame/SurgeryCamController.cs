@@ -719,11 +719,11 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Locked;
                                             })
                                             .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.Euler(-8.7f, -45, 0), 1f))
-                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0,0,-0.019f),1f))
-                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.0425f, -0.009f, -0.043f), 1f))
+                                            .Join(heldTool.transform.DOLocalMove(new Vector3(0.0131f,-0.0035f,0.0054f),1f))
+                                            .Append(heldTool.transform.DOLocalMove(new Vector3(0.0436f, -0.0094f, -0.0284f), 1f))
                                             .AppendCallback(() =>
                                             {
-                                                Destroy(healingAbutment);
+                                                healingAbutment.SetActive(false);
                                             })
                                             .Append(heldTool.transform.DOLocalMove(Vector3.zero, 1f))
                                             .Append(heldTool.transform.DOLocalRotateQuaternion(Quaternion.identity, 1f))
