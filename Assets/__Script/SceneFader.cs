@@ -17,12 +17,15 @@ public class SceneFader : MonoBehaviour
     public float delayDuration; // 이미지가 완전히 나타난 후 유지되는 시간
     public float fadeTriggerThreshold = 0.5f; // fadeImage 알파값이 0.5일 때 otherImage 페이드 시작
     private PlayerController playerController; // SurgeryCamController 참조
-
+    private MainCamController mainCamController;
     private void Start()
     {
         StartCoroutine(FadeIn()); // 장면 시작 시 페이드 인
         playerController = FindObjectOfType<PlayerController>();
+        mainCamController = FindObjectOfType<MainCamController>();
         playerController.enabled = false;
+        mainCamController.enabled = false;
+        Cursor.visible = false;
     }
 
     // 페이드 인 효과 (검은 이미지)
@@ -77,5 +80,6 @@ public class SceneFader : MonoBehaviour
             yield return null;
         }
         playerController.enabled = true;
+        mainCamController.enabled = true;
     }
 }
