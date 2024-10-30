@@ -812,7 +812,7 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.Clear;
-                                                Debug.Log("¼º°ø!");
+                                                Debug.Log("CLEAR!!!");
                                             });
                                     }
                                     else
