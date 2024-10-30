@@ -1,5 +1,6 @@
 /* Player가 있는 모든 씬의 Player에 들어갈 스크립트
  * 카메라 변경 기능(카메라 변경 조건 포함), 자연스러운 화면 전환
+ * 수술 카메라로 변경 시 들고 있는 오브젝트 크기 조절
  */
 
 
@@ -10,15 +11,15 @@ using DG.Tweening;
 
 public class CameraChange : MonoBehaviour
 {
-    public bool toolsColliderIn;
+    public bool toolsColliderIn; 
     public bool surgeryColliderIn;
     public bool isSequencePlaying;
     public bool surgeryCameraChange = false;
     public bool toolCameraChange = false;
 
-    public Camera mainCam;
-    public Camera surgeryCam;
-    public Camera toolsCam;
+    public Camera mainCam; // 플레이어에 붙어있는 메인 카메라
+    public Camera surgeryCam; // 환자 입쪽의 고정 카메라
+    public Camera toolsCam; // 도구 쟁반 위쪽의 고정 카메라
 
     public PlayerController playerController;
     public MainCamController mainCamController;
@@ -63,9 +64,18 @@ public class CameraChange : MonoBehaviour
                         isSequencePlaying = true;
                         playerController.enabled = false;
                         mainCamController.enabled = false;
+
                         heldTool.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+                        if (heldTool.transform.childCount != 0) // 손에 든 게 크라운일 경우에만 스케일 수정
+                        {
+                            if (heldTool.transform.GetChild(0).name == "ToolIncisorCrown" || heldTool.transform.GetChild(0).name == "ToolMolarCrown")
+                            {
+                                heldTool.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                            }
+                        }
                         heldDrill.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
                         heldAbutment.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+
                         heldTool.SetActive(false);
                         heldDrill.SetActive(false);
                         heldAbutment.SetActive(false);

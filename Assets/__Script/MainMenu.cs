@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     public void IncisorGame()
     {
         // 예를 들어, 게임이 시작하는 씬이 "GameScene"이라면 해당 씬을 로드
-        SceneManager.LoadScene("Test 1");
+        SceneManager.LoadScene("Test 1C");
     }
 
     public void MolarGame()
