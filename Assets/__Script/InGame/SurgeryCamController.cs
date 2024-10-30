@@ -23,6 +23,8 @@ public class SurgeryCamController : MonoBehaviour
 
     public float rayRange;
 
+    public bool playTool = false;
+
     public enum SurgeryState
     {
         Anesthesia,
@@ -135,6 +137,7 @@ public class SurgeryCamController : MonoBehaviour
 
                                                 currentState = SurgeryState.IncisionOne;
                                                 Debug.Log("¼º°ø!");
+                                                playTool = true;
                                             });
                                     }
                                     else
