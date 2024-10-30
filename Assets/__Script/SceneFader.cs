@@ -74,22 +74,4 @@ public class SceneFader : MonoBehaviour
             yield return null;
         }
     }
-
-    // 씬 전환 시 페이드 아웃을 적용
-    public IEnumerator FadeOutAndLoadScene(string sceneName)
-    {
-        float timer = 0f;
-
-        // fadeImage 알파 값을 0에서 1로 변경
-        while (timer < fadeDuration)
-        {
-            timer += Time.deltaTime;
-            float alphaValue = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-            fadeImage.color = new Color(0f, 0f, 0f, alphaValue);
-            yield return null;
-        }
-
-        // 페이드 아웃이 완료되면 씬 전환
-        SceneManager.LoadScene(sceneName);
-    }
 }
