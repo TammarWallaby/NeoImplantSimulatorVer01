@@ -2091,6 +2091,14 @@ MonoBehaviour:
   dientesGumsFive: {fileID: 5737592497190643432}
   surgicalSutureOne: {fileID: 6244263063560749338}
   surgicalSutureTwo: {fileID: 4645444671089044153}
+  surgicalSutureThree: {fileID: 0}
+  surgicalSutureFour: {fileID: 0}
+  surgicalSutureFive: {fileID: 0}
+  surgicalSutureSix: {fileID: 0}
+  surgicalSutureSeven: {fileID: 0}
+  surgicalSutureEight: {fileID: 0}
+  surgicalSutureNine: {fileID: 0}
+  surgicalSutureTen: {fileID: 0}
   fixture: {fileID: 5674328601926207790}
   healingAbutment: {fileID: 5879972312510681266}
   abutment: {fileID: 3017631275082168505}

@@ -65,6 +65,14 @@ public class SurgeryCamController : MonoBehaviour
 
     public GameObject surgicalSutureOne;
     public GameObject surgicalSutureTwo;
+    public GameObject surgicalSutureThree;
+    public GameObject surgicalSutureFour;
+    public GameObject surgicalSutureFive;
+    public GameObject surgicalSutureSix;
+    public GameObject surgicalSutureSeven;
+    public GameObject surgicalSutureEight;
+    public GameObject surgicalSutureNine;
+    public GameObject surgicalSutureTen;
 
     public GameObject fixture;
     public GameObject healingAbutment;
