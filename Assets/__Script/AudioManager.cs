@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
         }
 
         // T 버튼을 눌렀을 때 효과음 재생
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T)) 
         {
             PlayEffect(1); // 효과음 배열의 두 번째 효과음 재생 (인덱스를 원하는 값으로 설정)
         }
