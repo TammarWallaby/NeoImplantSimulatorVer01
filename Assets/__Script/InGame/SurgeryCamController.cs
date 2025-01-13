@@ -146,14 +146,12 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.IncisionOne;
-                                                Debug.Log("성공!");
                                                 playTool = true;
                                             });
                                     }
                                     else
                                     {
                                         // 실패 UI
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -184,12 +182,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 dientesGumsOne.SetActive(true);
 
                                                 currentState = SurgeryState.IncisionTwo;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -220,12 +216,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 dientesGumsTwo.SetActive(true);
 
                                                 currentState = SurgeryState.IncisionThree;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -255,13 +249,11 @@ public class SurgeryCamController : MonoBehaviour
                                                 dientesGumsTwo.SetActive(false);
                                                 dientesGumsThree.SetActive(true);
 
-                                                currentState = SurgeryState.ElevationOne;
-                                                Debug.Log("성공!");                                                
+                                                currentState = SurgeryState.ElevationOne;                                           
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -293,12 +285,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.ElevationTwo;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -330,12 +320,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.DrillSmall;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -377,18 +365,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.DrillMedium;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("드릴 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -430,18 +415,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.DrillLarge;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("드릴 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -483,18 +465,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.FixturePlace;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("드릴 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -534,18 +513,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.WrenchWithFixture;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("드릴 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -574,12 +550,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.HealingAbutmentPlace;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -615,18 +589,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.SutureOne;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("어버 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -674,12 +645,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.SutureTwo;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -724,12 +693,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.HealingAbutmentRemove;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -767,12 +734,10 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.AbutmentPlace;
-                                                Debug.Log("성공!");
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -808,18 +773,15 @@ public class SurgeryCamController : MonoBehaviour
                                                     Cursor.lockState = CursorLockMode.Confined;
 
                                                     currentState = SurgeryState.CrownPlace;
-                                                    Debug.Log("성공!");
                                                 });
                                         }
                                         else
                                         {
-                                            Debug.Log("어버 틀림 ㅋ");
                                             gameOver = true;
                                         }
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;
@@ -847,13 +809,11 @@ public class SurgeryCamController : MonoBehaviour
                                                 Cursor.lockState = CursorLockMode.Confined;
 
                                                 currentState = SurgeryState.Clear;
-                                                Debug.Log("CLEAR!!!");
                                                 gameClear = true;
                                             });
                                     }
                                     else
                                     {
-                                        Debug.Log("순서 틀림 ㅋ");
                                         gameOver = true;
                                     }
                                     break;

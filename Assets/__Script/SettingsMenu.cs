@@ -51,7 +51,8 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            Debug.LogError("mouseSensitivitySlider가 할당되지 않았습니다.");
+            
+            LogError("mouseSensitivitySlider가 할당되지 않았습니다.");
         }
 
         // 사운드 슬라이더 설정

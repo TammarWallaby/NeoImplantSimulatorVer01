@@ -3,7 +3,6 @@
  * 수술 카메라로 변경 시 들고 있는 오브젝트 크기 조절
  */
 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -174,8 +173,6 @@ public class CameraChange : MonoBehaviour
             }
         }
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {

@@ -66,8 +66,6 @@ public class ToolsCamController : MonoBehaviour
                 DropTool();
             }
         }
-
-        
     }
 
     public void PickUpTool(GameObject tool)
